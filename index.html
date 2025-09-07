@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jacob McGreen - Portfolio</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Theme Toggle Button -->
+    <button id="theme-btn" class="theme-toggle" aria-label="Toggle theme">🌙</button>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="nav-container">
+                <div class="logo">Portfolio</div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="floating-shapes">
+            <div class="shape">◆</div>
+            <div class="shape">●</div>
+            <div class="shape">▲</div>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <h1>Jacob McGreen</h1>
+                <p>Developer and Aspiring Quantitative Trader</p>
+                <a href="#about" class="cta-button">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <!--
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <div class="profile-img">
+                        <img src="images/hs.jpg">
+                    </div>
+                </div>
+                <div class="about-text">
+                    <p>Hello! I'm a passionate web developer with experience in creating beautiful, functional websites and applications. I love turning complex problems into simple, beautiful designs.</p>
+                    <p>When I'm not coding, you can find me exploring new technologies, contributing to open source projects, or enjoying a good cup of coffee while sketching out my next big idea.</p>
+                    <p>I believe in writing clean, maintainable code and creating user experiences that make a difference.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    -->
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon">⚙️</div>
+                    <h3>Backend Development</h3>
+                    <p>C++, Java, Python, SQL, Typescript, MongoDB, Rest API</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🔧</div>
+                    <h3>Tools & Technologies</h3>
+                    <p>Git, CI/CD</p>
+                    <p>AWS: Lambda, S3, Bedrock, EC2</p>
+                </div>
+                <!--
+                <div class="skill-card">
+                    <div class="skill-icon">+-</div>
+                    <h3>Quantitative Skills</h3>
+                    <p></p>
+                </div>
+                -->
+                <div class="skill-card">
+                    <div class="skill-icon">⚡</div>
+                    <h3>Frontend Development</h3>
+                    <p>HTML, CSS, JavaScript, React</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+     <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <!-- Replace with: <img src="images/project1.jpg" alt="E-Commerce Website"> -->
+                        <span>Monte-Carlo Options Pricing</span>
+                    </div>
+                    <div class="project-info">
+                        <h3>Monte-Carlo Options Pricing</h3>
+                        <p>Uses monte carlo simulation to simulate the future price of an option.</p>
+                        <div class="project-stacks">
+                            <span class="project-stack">C++</span> 
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">Live Demo</a>
+                            <a href="#" class="project-link">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="images/finnov8.png" alt="Task Management App">
+                        <!-- <span>Finnov8 2024</span> -->
+                    </div>
+                    <div class="project-info">
+                        <h3>Finnov8 2024</h3>
+                        <p>Formulated a Random Forest model aided by XGBoost tree gradienting to uncover the determinants that signal a company’s exit potential. Finnov8 is a Northeast regional competition, we achieved 4th place in model accuracy and 4th overall</p>
+                        <div class="project-stacks">
+                            <span class="project-stack">Python</span>
+                            <span class="project-stack">Jupyter Notebook</span>
+                            <span class="project-stack">Excel</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">Live Demo</a>
+                            <a href="https://github.com/jacobmcgreen/Connect4AI" class="project-link">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="images/connect4.png" alt="Task Management App">
+                        <!-- <span>Connect 4 AI</span> -->
+                    </div>
+                    <div class="project-info">
+                        <h3>Connect 4 AI</h3>
+                        <p> Designed and implemented a Connect Four game AI in Python using object-oriented programming. The AI player utilizes the Minimax algorithm with Alpha-Beta Pruning to make strategic decisions during gameplay.</p>
+                        <div class="project-stacks">
+                            <span class="project-stack">Python</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">Live Demo</a>
+                            <a href="https://github.com/jacobmcgreen/Connect4AI" class="project-link">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="images/unicycle.png" alt="Weather Dashboard">
+                        <!-- <span>Unicycle</span> -->
+                    </div>
+                    <div class="project-info">
+                        <h3>Unicycle</h3>
+                        <p>Worked on Unicycle, a place where students can sell unwanted items to other students, utilizing Typescript and MongoDB</p> 
+                        <p>Unicycle uses Google-Auth, AWS, and Prisma for the Database.</p>
+                        <div class="project-stacks">
+                            <span class="project-stack">TypeScript</span>
+                            <span class="project-stack">React</span>
+                            <span class="project-stack">MongoDB</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">Live Demo</a>
+                            <a href="#" class="project-link">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Let's Connect</h3>
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div>
+                            <strong>Email</strong><br>
+                            jmcgreen07@gmail.com
+                        </div>
+                    </div>
+                    <!-- <div class="contact-item">
+                        <div class="contact-icon">📱</div>
+                        <div>
+                            <strong>Phone</strong><br>
+                            +1 (555) 123-4567
+                        </div>
+                    </div> -->
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div>
+                            <strong>Location</strong><br>
+                            Rochester, New York
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form" action="https://formspree.io/f/mjkejwwv" method="POST">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Jacob McGreen. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
