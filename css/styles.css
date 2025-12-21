@@ -369,7 +369,7 @@
             border-radius: 5px;
             border-width: 3px;
             border-color: var(--color-2);
-            font-size: 0.75rem;
+            font-size: 0.80rem;
             transition: background 0.3s ease;
             border-style: solid; 
         }
