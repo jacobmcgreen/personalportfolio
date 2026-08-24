@@ -1,229 +1,255 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jacob McGreen - Portfolio</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Jacob McGreen is a developer working at the intersection of software, artificial intelligence, and finance.">
+    <meta name="theme-color" content="#0a0a0a">
+    <title>Jacob McGreen — Developer</title>
     <link rel="stylesheet" href="css/styles.css">
+    <script src="js/script.js" defer></script>
 </head>
 <body>
-    <!-- Theme Toggle Button -->
-    <button id="theme-btn" class="theme-toggle" aria-label="Toggle theme">🌙</button>
-    <!-- Navigation -->
-    <nav>
-        <div class="container">
-            <div class="nav-container">
-                <div class="logo"></div>
-                <ul class="nav-links">
-                    <li><a href="#home">Home</a></li>
-                    <!-- <li><a href="#about">About</a></li> -->
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <a class="skip-link" href="#main">Skip to content</a>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Jacob McGreen</h1>
-                <p>Developer</p>
-                <a href="/assets/JMcGreen Resume.pdf" download class="cta-button">
-                    My Resume
-                </a>
+    <header class="site-header">
+        <a class="wordmark" href="#top" aria-label="Jacob McGreen, home">JM<span>.</span></a>
+        <nav class="site-nav" aria-label="Primary navigation">
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
+            <div class="nav-links" id="nav-links">
+                <a href="#work">Work</a>
+                <a href="#lab">Lab</a>
+                <a href="#experience">Experience</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+                <button class="nav-action" type="button" data-open-resume>Résumé</button>
             </div>
-        </div>
-    </section>
+        </nav>
+        <button class="theme-toggle" type="button" aria-pressed="false">
+            <span class="theme-label">Dark</span>
+            <span class="theme-dot" aria-hidden="true"></span>
+        </button>
+    </header>
 
-    <!-- About Section -->
-    
-    <section id="about">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-image">
-                    <div class="profile-img">
-                        <img src="images/hs.jpg">
-                    </div>
-                </div>
-                <div class="about-text">
-                    <p>I'm a Computer Science senior at the University of Rochester with a passion for the intersection of artificial intelligence and finance. My academic foundation in CS, combined with hands-on experience in both insurance and asset management, has given me a unique perspective on how technology can transform financial services.</p>
+    <main id="main">
+        <section class="hero section-shell" id="top">
+            <div class="hero-copy reveal">
+                <p class="eyebrow">Jacob McGreen · Portfolio</p>
+                <h1>Enterprise AI and <em>software engineering.</em></h1>
+                <p class="hero-intro">Enterprise AI at Palo Alto Networks. B.S. Computer Science, University of Rochester, 2026.</p>
+                <div class="hero-actions">
+                    <a class="button button-primary" href="#work">Explore my work <span aria-hidden="true">↘</span></a>
+                    <button class="text-button" type="button" data-open-terminal>Open terminal <kbd>⌘ K</kbd></button>
                 </div>
             </div>
-        </div>
-    </section>
-    
-    <!-- Skills Section -->
-    <section id="skills" class="skills">
-        <div class="container">
-            <h2 class="section-title">Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <div class="skill-icon">⚙️</div>
-                    <h3>Backend Development</h3>
-                    <p>C++, Java, Python, SQL, Typescript, MongoDB, Rest API</p>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-icon">🔧</div>
-                    <h3>Tools & Technologies</h3>
-                    <p>Git, CI/CD</p>
-                    <p>AWS: Lambda, S3, Bedrock, EC2</p>
-                </div>
-                <!--
-                <div class="skill-card">
-                    <div class="skill-icon">+ -</div>
-                    <h3>Quantitative Skills</h3>
-                    <p></p>
-                </div>
-                -->
-                <div class="skill-card">
-                    <div class="skill-icon">⚡</div>
-                    <h3>Frontend Development</h3>
-                    <p>HTML, CSS, JavaScript, React</p>
-                </div>
+            <div class="hero-visual reveal">
+                <figure class="portrait-frame">
+                    <img src="images/hs.jpg" alt="Portrait of Jacob McGreen" width="1074" height="1397">
+                </figure>
+                <p class="portrait-note">Santa Clara, California</p>
+                <span class="index-mark" aria-hidden="true">01</span>
             </div>
-        </div>
-    </section>
+        </section>
 
-     <!-- Projects Section -->
-    <section id="projects">
-        <div class="container">
-            <h2 class="section-title">Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="images/OptionsPricer.png"> 
-                        <!-- <span>Monte-Carlo Options Pricing</span> -->
-                    </div>
-                    <div class="project-info">
-                        <h3>Monte-Carlo Options Pricing</h3>
-                        <p>Uses monte carlo simulation to simulate the future price of an option.</p>
-                        <div class="project-stacks">
-                            <span class="project-stack">Python</span> 
-                            <span class="project-stack">Next.js</span> 
-                            <span class="project-stack">React</span> 
+        <section class="work section-shell" id="work">
+            <div class="section-heading reveal">
+                <p class="eyebrow">Selected work</p>
+                <h2>Selected software projects.</h2>
+                <p>Financial modeling, machine learning, algorithms, and full-stack development.</p>
+            </div>
+
+            <div class="project-list">
+                <article class="project project-featured reveal">
+                    <a class="project-media" href="https://monte-carlo-options-pricing.vercel.app/" target="_blank" rel="noopener" aria-label="View Monte Carlo Options Pricing live site">
+                        <img src="images/OptionsPricer.png" alt="Monte Carlo options pricing interface" width="3006" height="1292">
+                        <span class="project-number">01</span>
+                    </a>
+                    <div class="project-body">
+                        <div class="project-title-row">
+                            <h3>Monte Carlo Options Pricing</h3>
+                            <a href="https://monte-carlo-options-pricing.vercel.app/" target="_blank" rel="noopener" aria-label="Open live site">↗</a>
                         </div>
-                        <div class="project-links">
-                            <!-- <a href="#" class="project-link">Live Demo</a> -->
-                            <a href="https://monte-carlo-options-pricing.vercel.app/" class="project-link">Live Site</a>
-                        </div>
+                        <p>A simulation tool that models potential future option prices through repeated randomized market paths.</p>
+                        <ul class="tag-list" aria-label="Technologies"><li>Python</li><li>Next.js</li><li>React</li></ul>
                     </div>
+                </article>
+
+                <div class="project-grid">
+                    <article class="project reveal">
+                        <a class="project-media project-media-square" href="https://github.com/jacobmcgreen/Finnov8-2024" target="_blank" rel="noopener" aria-label="View Finnov8 2024 on GitHub">
+                            <img src="images/finnov8.png" alt="Finnov8 2024 project presentation" width="500" height="500">
+                            <span class="project-number">02</span>
+                        </a>
+                        <div class="project-body">
+                            <div class="project-title-row"><h3>Finnov8 2024</h3><a href="https://github.com/jacobmcgreen/Finnov8-2024" target="_blank" rel="noopener" aria-label="Open GitHub repository">↗</a></div>
+                            <p>A Random Forest and XGBoost model for identifying signals in a company’s exit potential. Fourth overall in the regional competition.</p>
+                            <ul class="tag-list" aria-label="Technologies"><li>Python</li><li>XGBoost</li><li>Excel</li></ul>
+                        </div>
+                    </article>
+
+                    <article class="project project-offset reveal">
+                        <a class="project-media" href="https://github.com/jacobmcgreen/Connect4AI" target="_blank" rel="noopener" aria-label="View Connect Four AI on GitHub">
+                            <img src="images/connect4.png" alt="Connect Four game board" width="618" height="348">
+                            <span class="project-number">03</span>
+                        </a>
+                        <div class="project-body">
+                            <div class="project-title-row"><h3>Connect Four AI</h3><a href="https://github.com/jacobmcgreen/Connect4AI" target="_blank" rel="noopener" aria-label="Open GitHub repository">↗</a></div>
+                            <p>A strategic game agent built with Minimax and Alpha-Beta Pruning, organized with object-oriented Python.</p>
+                            <ul class="tag-list" aria-label="Technologies"><li>Python</li><li>Algorithms</li><li>OOP</li></ul>
+                        </div>
+                    </article>
                 </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="images/finnov8.png" alt="Finnov8 Hackathon">
-                        <!-- <span>Finnov8 2024</span> -->
+
+                <article class="project project-wide reveal">
+                    <a class="project-media" href="https://shopunicycle.com/" target="_blank" rel="noopener" aria-label="View Unicycle live site">
+                        <img src="images/unicycle.png" alt="Unicycle student marketplace" width="1710" height="629">
+                        <span class="project-number">04</span>
+                    </a>
+                    <div class="project-body">
+                        <div class="project-title-row"><h3>Unicycle</h3><a href="https://shopunicycle.com/" target="_blank" rel="noopener" aria-label="Open live site">↗</a></div>
+                        <p>A student marketplace for giving unwanted items a second life, built with authentication, cloud services, and a modern data layer.</p>
+                        <ul class="tag-list" aria-label="Technologies"><li>TypeScript</li><li>React</li><li>MongoDB</li><li>AWS</li></ul>
                     </div>
-                    <div class="project-info">
-                        <h3>Finnov8 2024</h3>
-                        <p>Formulated a Random Forest model aided by XGBoost tree gradienting to uncover the determinants that signal a company's exit potential. Finnov8 is a Northeast regional competition, we achieved 4th place in model accuracy and 4th overall.</p>
-                        <div class="project-stacks">
-                            <span class="project-stack">Python</span>
-                            <span class="project-stack">Jupyter Notebook</span>
-                            <span class="project-stack">Excel</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/jacobmcgreen/Finnov8-2024" class="project-link">GitHub</a>
-                        </div>
-                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="lab section-shell" id="lab">
+            <div class="lab-heading reveal">
+                <div>
+                    <p class="eyebrow">Project lab</p>
+                    <h2>Interactive project demos.</h2>
                 </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="images/connect4.png" alt="Connect 4 App">
-                        <!-- <span>Connect 4 AI</span> -->
-                    </div>
-                    <div class="project-info">
-                        <h3>Connect 4 AI</h3>
-                        <p> Designed and implemented a Connect Four game AI in Python using object-oriented programming. The AI player utilizes the Minimax algorithm with Alpha-Beta Pruning to make strategic decisions during gameplay.</p>
-                        <div class="project-stacks">
-                            <span class="project-stack">Python</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/jacobmcgreen/Connect4AI" class="project-link">GitHub</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="images/unicycle.png" alt="Unicycle">
-                        <!-- <span>Unicycle</span> -->
-                    </div>
-                    <div class="project-info">
-                        <h3>Unicycle</h3>
-                        <p>Worked on Unicycle, a place where students can sell unwanted items to other students, utilizing Typescript and MongoDB.</p> 
-                        <p>Unicycle uses Google-Auth, AWS, and Prisma for the Database.</p>
-                        <div class="project-stacks">
-                            <span class="project-stack">TypeScript</span>
-                            <span class="project-stack">React</span>
-                            <span class="project-stack">MongoDB</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://shopunicycle.com/" class="project-link">Live Site</a>
-                        </div>
-                    </div>
+                <div class="lab-tabs" role="tablist" aria-label="Interactive project demos">
+                    <button type="button" role="tab" aria-selected="true" aria-controls="options-demo" id="options-tab">Options pricer</button>
+                    <button type="button" role="tab" aria-selected="false" aria-controls="connect-demo" id="connect-tab">Connect Four</button>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h3>Let's Connect</h3>
-                    <div class="contact-item">
-                        <div class="contact-icon">📧</div>
-                        <div>
-                            <strong>Email</strong><br>
-                            jmcgreen07@gmail.com
-                        </div>
-                    </div>
-                    <!-- <div class="contact-item">
-                        <div class="contact-icon">📱</div>
-                        <div>
-                            <strong>Phone</strong><br>
-                            +1 (555) 123-4567
-                        </div>
-                    </div> -->
-                    <div class="contact-item">
-                        <div class="contact-icon">📍</div>
-                        <div>
-                            <strong>Location</strong><br>
-                            Rochester, New York
-                        </div>
-                    </div>
+            <div class="demo-panel reveal" id="options-demo" role="tabpanel" aria-labelledby="options-tab">
+                <div class="demo-controls">
+                    <div class="demo-title"><span>01</span><h3>Monte Carlo playground</h3></div>
+                    <p>Adjust the market assumptions and run a lightweight simulation directly in the browser.</p>
+                    <label>Spot price <output id="spot-output">$100</output><input id="spot" type="range" min="50" max="150" value="100"></label>
+                    <label>Strike price <output id="strike-output">$105</output><input id="strike" type="range" min="50" max="150" value="105"></label>
+                    <label>Volatility <output id="vol-output">25%</output><input id="volatility" type="range" min="5" max="80" value="25"></label>
+                    <label>Days to expiry <output id="days-output">90</output><input id="days" type="range" min="7" max="365" value="90"></label>
+                    <button class="button button-primary" id="run-simulation" type="button">Run simulation <span aria-hidden="true">→</span></button>
                 </div>
-                <form class="contact-form" action="https://formspree.io/f/mjkejwwv" method="POST">
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn">Send Message</button>
-                </form>
+                <div class="demo-output" aria-live="polite">
+                    <div class="price-readout"><span>Estimated call value</span><strong id="option-price">$4.68</strong><small id="simulation-note">10,000 simulated paths</small></div>
+                    <canvas id="price-chart" width="760" height="380" aria-label="Distribution of simulated terminal prices"></canvas>
+                    <div class="chart-axis"><span>Lower terminal price</span><span>Higher terminal price</span></div>
+                </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Jacob McGreen. All rights reserved.</p>
+            <div class="demo-panel connect-panel" id="connect-demo" role="tabpanel" aria-labelledby="connect-tab" hidden>
+                <div class="demo-controls">
+                    <div class="demo-title"><span>02</span><h3>Play the search tree</h3></div>
+                    <p>You play orange. The browser runs depth-6 Minimax with Alpha-Beta pruning—the hardest standard setting in the original project.</p>
+                    <div class="difficulty-badge">Hardest · Depth 6</div>
+                    <div class="game-status" id="game-status" aria-live="polite">Your move</div>
+                    <button class="button button-outline" id="reset-game" type="button">Reset board</button>
+                </div>
+                <div class="connect-wrap">
+                    <div class="connect-board" id="connect-board" role="grid" aria-label="Connect Four board"></div>
+                    <p>Choose any open column. First to connect four wins.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="experience section-shell" id="experience">
+            <div class="experience-heading reveal">
+                <p class="eyebrow">Experience</p>
+                <h2>Software engineering experience.</h2>
+            </div>
+            <div class="timeline">
+                <article class="timeline-item timeline-current reveal">
+                    <div class="timeline-meta"><span>Now</span><p>Current role</p></div>
+                    <div class="timeline-role"><p>Palo Alto Networks</p><h3>Enterprise AI</h3><p class="location">HQ · Santa Clara, California</p></div>
+                    <div class="timeline-detail"><p>Currently working in Enterprise AI at Palo Alto Networks.</p></div>
+                </article>
+                <article class="timeline-item reveal">
+                    <div class="timeline-meta"><span>2025</span><p>May — Aug</p></div>
+                    <div class="timeline-role"><p>Principal Financial Group</p><h3>Software Engineering Intern</h3><p class="location">Des Moines, Iowa</p></div>
+                    <div class="timeline-detail"><p>Built a production internal AI service with Python, AWS, and ServiceNow that replaced a third-party tool and reduced annual licensing costs by <strong>$519K</strong>.</p><ul><li>Java and Spring microservices</li><li>75+ JUnit tests</li><li>95%+ coverage across three services</li></ul></div>
+                </article>
+                <article class="timeline-item reveal">
+                    <div class="timeline-meta"><span>2024—25</span><p>Jun — Feb</p></div>
+                    <div class="timeline-role"><p>The Mutual Group</p><h3>Applications Development Intern</h3><p class="location">Des Moines / Remote</p></div>
+                    <div class="timeline-detail"><p>Improved accessibility, database connectivity, and search workflows across internal insurance systems supporting more than <strong>100,000 claims</strong>.</p><ul><li>TypeScript and Angular</li><li>RESTful endpoints</li><li>React, Java, and SQL modernization</li></ul></div>
+                </article>
+                <article class="timeline-item reveal">
+                    <div class="timeline-meta"><span>2024—25</span><p>Feb — Feb</p></div>
+                    <div class="timeline-role"><p>RocLab</p><h3>Back End Engineer</h3><p class="location">Rochester, New York</p></div>
+                    <div class="timeline-detail"><p>Shipped TypeScript backend features for Unicycle, a live student marketplace serving <strong>500+ users</strong>, and led its hosting infrastructure migration.</p><ul><li>Listings, uploads, and search</li><li>AWS deployment</li><li>Authentication and production stability</li></ul></div>
+                </article>
+            </div>
+        </section>
+
+        <section class="about section-shell" id="about">
+            <div class="about-lead reveal">
+                <p class="eyebrow">About</p>
+                <h2>Background and technical skills.</h2>
+            </div>
+            <div class="about-copy reveal">
+                <p class="large-copy">Computer Science senior at the University of Rochester. Current Enterprise AI role at Palo Alto Networks.</p>
+                <p>Experience includes production AI services, financial platforms, insurance systems, AWS infrastructure, backend development, and full-stack applications.</p>
+                <button class="button button-outline" type="button" data-open-resume>View my résumé <span aria-hidden="true">↗</span></button>
+            </div>
+
+            <div class="capabilities reveal">
+                <div class="capability"><span>01</span><h3>Backend</h3><p>C++, Java, Python, SQL, TypeScript, MongoDB, REST APIs</p></div>
+                <div class="capability"><span>02</span><h3>Frontend</h3><p>HTML, CSS, JavaScript, React, Next.js</p></div>
+                <div class="capability"><span>03</span><h3>Cloud & delivery</h3><p>Git, CI/CD, AWS Lambda, S3, Bedrock, and EC2</p></div>
+            </div>
+        </section>
+
+        <section class="contact section-shell" id="contact">
+            <div class="contact-intro reveal">
+                <p class="eyebrow">Get in touch</p>
+                <h2>Contact Jacob.</h2>
+                <p>Send an email or request a 30-minute call.</p>
+                <a class="contact-email" href="mailto:jmcgreen07@gmail.com">jmcgreen07@gmail.com <span aria-hidden="true">↗</span></a>
+                <button class="button button-outline schedule-button" type="button" data-open-schedule>Request a 30-minute call <span aria-hidden="true">→</span></button>
+            </div>
+            <form class="contact-form reveal" action="https://formspree.io/f/mjkejwwv" method="post">
+                <label>Name<input type="text" name="name" autocomplete="name" required></label>
+                <label>Email<input type="email" name="email" autocomplete="email" required></label>
+                <label>Message<textarea name="message" rows="5" required></textarea></label>
+                <button class="button button-primary" type="submit">Send message <span aria-hidden="true">↗</span></button>
+            </form>
+        </section>
+    </main>
+
+    <dialog class="feature-dialog resume-dialog" id="resume-dialog">
+        <div class="dialog-bar"><div><span>Document 01</span><strong>Jacob McGreen — Résumé</strong></div><div><a href="assets/JMcGreen Resume.pdf" download>Download</a><button type="button" data-close-dialog aria-label="Close résumé viewer">Close</button></div></div>
+        <iframe src="assets/JMcGreen Resume.pdf#view=FitH" title="Jacob McGreen résumé"></iframe>
+    </dialog>
+
+    <dialog class="feature-dialog schedule-dialog" id="schedule-dialog">
+        <button class="dialog-close" type="button" data-close-dialog aria-label="Close scheduling">Close</button>
+        <div class="schedule-copy"><p class="eyebrow">Schedule</p><h2>Find a time to talk.</h2><p>Choose a date and time. This creates a pre-filled meeting request—nothing is booked until we confirm by email.</p></div>
+        <form id="schedule-form">
+            <fieldset><legend>1. Pick a day</legend><div class="date-options" id="date-options"></div></fieldset>
+            <fieldset><legend>2. Pick a time <span>Pacific time</span></legend><div class="time-options"><label><input type="radio" name="time" value="10:00 AM" required><span>10:00 AM</span></label><label><input type="radio" name="time" value="1:00 PM"><span>1:00 PM</span></label><label><input type="radio" name="time" value="3:30 PM"><span>3:30 PM</span></label></div></fieldset>
+            <label class="schedule-name">Your name<input type="text" name="visitorName" autocomplete="name" required></label>
+            <button class="button button-primary" type="submit">Prepare request <span aria-hidden="true">↗</span></button>
+        </form>
+    </dialog>
+
+    <dialog class="terminal-dialog" id="terminal-dialog">
+        <div class="terminal-bar"><span>jacob@portfolio:~</span><button type="button" data-close-dialog aria-label="Close terminal">×</button></div>
+        <div class="terminal-output" id="terminal-output" aria-live="polite">
+            <p>Jacob McGreen portfolio shell</p><p>Type <strong>help</strong> to see available commands.</p>
         </div>
+        <form class="terminal-form" id="terminal-form"><label><span>visitor@portfolio:~$</span><input id="terminal-input" type="text" autocomplete="off" spellcheck="false" aria-label="Terminal command"></label></form>
+    </dialog>
+
+    <footer class="site-footer">
+        <a class="wordmark" href="#top" aria-label="Back to top">JM<span>.</span></a>
+        <p>© <span id="year">2026</span> Jacob McGreen</p>
+        <div><a href="https://github.com/jacobmcgreen" target="_blank" rel="noopener">GitHub</a><a href="mailto:jmcgreen07@gmail.com">Email</a></div>
     </footer>
-
-    <script src="js/script.js"></script>
 </body>
 </html>
