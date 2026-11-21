@@ -62,14 +62,17 @@ button, input, textarea { font: inherit; }
     gap: 1.5rem;
     min-height: 4.25rem;
     padding: 0 clamp(1.25rem, 4vw, 3.5rem);
-    background: color-mix(in srgb, var(--paper) 72%, transparent);
-    backdrop-filter: blur(16px);
+    color: var(--field-ink);
+    background: transparent;
+    backdrop-filter: none;
     border-bottom: 1px solid transparent;
-    transition: border-color 0.3s var(--ease-out), background 0.3s;
+    transition: border-color 0.3s var(--ease-out), background 0.3s, color 0.3s, backdrop-filter 0.3s;
 }
 .site-header.is-scrolled {
+    color: var(--ink);
     border-bottom-color: var(--line);
     background: color-mix(in srgb, var(--paper) 88%, transparent);
+    backdrop-filter: blur(16px);
 }
 
 .wordmark {
@@ -351,7 +354,12 @@ button, input, textarea { font: inherit; }
     object-fit: cover;
     transition: transform 0.7s var(--ease-out), filter 0.4s;
 }
-.build-lead .build-visual img { aspect-ratio: 16 / 9.5; }
+.build-lead .build-visual img {
+    aspect-ratio: 16 / 9;
+    max-height: min(28rem, 52vh);
+    object-fit: cover;
+    object-position: top center;
+}
 .build-pair .build-visual img { aspect-ratio: 4 / 3; }
 .build-visual:hover img {
     transform: scale(1.03);
@@ -942,6 +950,7 @@ dialog::backdrop {
         gap: 0;
         padding: 0.75rem 1.25rem 1.25rem;
         border-bottom: 1px solid var(--line);
+        color: var(--ink);
         background: var(--paper);
         transform: translateY(-130%);
         transition: transform 0.3s var(--ease-out);
