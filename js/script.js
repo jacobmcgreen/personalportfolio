@@ -1,32 +1,12 @@
 const root = document.documentElement;
-const themeButton = document.querySelector('.theme-toggle');
-const themeLabel = document.querySelector('.theme-label');
 const menuButton = document.querySelector('.menu-toggle');
 const navLinks = document.querySelector('.nav-links');
+const siteHeader = document.querySelector('.site-header');
 const resumeDialog = document.getElementById('resume-dialog');
 const scheduleDialog = document.getElementById('schedule-dialog');
 const terminalDialog = document.getElementById('terminal-dialog');
 const terminalInput = document.getElementById('terminal-input');
 const terminalOutput = document.getElementById('terminal-output');
-
-const preferredTheme = localStorage.getItem('theme') ||
-    (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-
-function setTheme(theme) {
-    root.dataset.theme = theme;
-    const isDark = theme === 'dark';
-    themeButton.setAttribute('aria-pressed', String(isDark));
-    themeLabel.textContent = isDark ? 'Light' : 'Dark';
-    if (window.lastSimulation) drawDistribution(window.lastSimulation);
-}
-
-setTheme(preferredTheme);
-
-themeButton.addEventListener('click', () => {
-    const nextTheme = root.dataset.theme === 'dark' ? 'light' : 'dark';
-    localStorage.setItem('theme', nextTheme);
-    setTheme(nextTheme);
-});
 
 menuButton.addEventListener('click', () => {
     const isOpen = navLinks.classList.toggle('is-open');
@@ -42,6 +22,10 @@ navLinks.addEventListener('click', (event) => {
     }
 });
 
+window.addEventListener('scroll', () => {
+    siteHeader.classList.toggle('is-scrolled', window.scrollY > 24);
+}, { passive: true });
+
 const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -49,7 +33,7 @@ const observer = new IntersectionObserver((entries) => {
             observer.unobserve(entry.target);
         }
     });
-}, { threshold: 0.1 });
+}, { threshold: 0.12 });
 
 document.querySelectorAll('.reveal').forEach((element) => observer.observe(element));
 document.getElementById('year').textContent = new Date().getFullYear();
@@ -69,7 +53,6 @@ document.querySelectorAll('dialog').forEach((dialog) => dialog.addEventListener(
     if (event.target === dialog) dialog.close();
 }));
 
-// Project lab tabs
 const labTabs = [...document.querySelectorAll('[role="tab"]')];
 labTabs.forEach((tab) => tab.addEventListener('click', () => {
     labTabs.forEach((candidate) => {
@@ -80,7 +63,6 @@ labTabs.forEach((tab) => tab.addEventListener('click', () => {
     if (tab.id === 'options-tab' && window.lastSimulation) drawDistribution(window.lastSimulation);
 }));
 
-// Monte Carlo demo
 const simulationInputs = {
     spot: document.getElementById('spot'),
     strike: document.getElementById('strike'),
@@ -122,8 +104,8 @@ function drawDistribution(prices) {
     const width = canvas.width;
     const height = canvas.height;
     const sorted = [...prices].sort((a, b) => a - b);
-    const low = sorted[Math.floor(sorted.length * .01)];
-    const high = sorted[Math.floor(sorted.length * .99)];
+    const low = sorted[Math.floor(sorted.length * 0.01)];
+    const high = sorted[Math.floor(sorted.length * 0.99)];
     const binCount = 30;
     const bins = Array(binCount).fill(0);
 
@@ -136,7 +118,7 @@ function drawDistribution(prices) {
     const gap = 4;
     const barWidth = (width - gap * (binCount - 1)) / binCount;
     context.clearRect(0, 0, width, height);
-    context.fillStyle = getComputedStyle(root).getPropertyValue('--accent').trim();
+    context.fillStyle = getComputedStyle(root).getPropertyValue('--accent-soft').trim() || '#c5e8df';
     bins.forEach((count, index) => {
         const barHeight = (count / max) * (height - 32);
         context.fillRect(index * (barWidth + gap), height - barHeight, barWidth, barHeight);
@@ -154,7 +136,6 @@ Object.values(simulationInputs).forEach((input) => input.addEventListener('input
 document.getElementById('run-simulation').addEventListener('click', runSimulation);
 runSimulation();
 
-// Connect Four demo
 const rows = 6;
 const columns = 7;
 let board = Array.from({ length: rows }, () => Array(columns).fill(0));
@@ -324,7 +305,6 @@ document.getElementById('reset-game').addEventListener('click', () => {
 });
 renderBoard();
 
-// Scheduling request
 const dateOptions = document.getElementById('date-options');
 const candidateDates = [];
 const cursor = new Date();
@@ -345,25 +325,31 @@ candidateDates.forEach((date, index) => {
 document.getElementById('schedule-form').addEventListener('submit', (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    const date = new Date(`${data.get('date')}T12:00:00`).toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+    const date = new Date(`${data.get('date')}T12:00:00`).toLocaleDateString('en-US', {
+        weekday: 'long',
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric'
+    });
     const subject = encodeURIComponent(`30-minute call request from ${data.get('visitorName')}`);
     const body = encodeURIComponent(`Hi Jacob,\n\nI'd like to request a 30-minute call on ${date} at ${data.get('time')} Pacific time.\n\nBest,\n${data.get('visitorName')}`);
     window.location.href = `mailto:jmcgreen07@gmail.com?subject=${subject}&body=${body}`;
 });
 
-// Portfolio terminal
 const terminalCommands = {
-    help: () => ['Available commands:', 'about · experience · projects · lab · skills', 'resume · schedule · contact · theme · clear'],
-    whoami: () => ['visitor — currently exploring Jacob McGreen’s portfolio'],
+    help: () => ['Available commands:', 'about · path · builds · lab · skills', 'resume · schedule · contact · clear'],
+    whoami: () => ['visitor — exploring Jacob McGreen’s builds'],
     about: () => navigateTo('about'),
-    experience: () => navigateTo('experience'),
-    projects: () => navigateTo('work'),
+    path: () => navigateTo('path'),
+    experience: () => navigateTo('path'),
+    builds: () => navigateTo('builds'),
+    projects: () => navigateTo('builds'),
+    work: () => navigateTo('builds'),
     lab: () => navigateTo('lab'),
-    skills: () => ['Python, Java, C++, C, TypeScript, JavaScript, SQL, React', 'Spring, FastAPI, Next.js, Angular, AWS, MongoDB'],
+    skills: () => ['Python, Java, C++, TypeScript, SQL, React', 'Spring, Next.js, AWS, MongoDB'],
     resume: () => { terminalDialog.close(); openDialog(resumeDialog); return []; },
     schedule: () => { terminalDialog.close(); openDialog(scheduleDialog); return []; },
-    contact: () => ['Email: jmcgreen07@gmail.com', 'Location: Palo Alto Networks HQ · Santa Clara, California'],
-    theme: () => { themeButton.click(); return [`Theme changed to ${root.dataset.theme}.`]; },
+    contact: () => ['Email: jmcgreen07@gmail.com', 'Santa Clara, California'],
     clear: () => { terminalOutput.innerHTML = ''; return []; }
 };
 

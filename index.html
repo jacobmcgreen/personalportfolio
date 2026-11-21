@@ -3,9 +3,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Jacob McGreen is a developer working at the intersection of software, artificial intelligence, and finance.">
-    <meta name="theme-color" content="#0a0a0a">
-    <title>Jacob McGreen — Developer</title>
+    <meta name="description" content="Jacob McGreen builds systems at the edge of markets, models, and software — personal site for selected work in quantitative tools and research engineering.">
+    <meta name="theme-color" content="#E7EEF4">
+    <title>Jacob McGreen — Builds</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <script src="js/script.js" defer></script>
 </head>
@@ -13,143 +16,169 @@
     <a class="skip-link" href="#main">Skip to content</a>
 
     <header class="site-header">
-        <a class="wordmark" href="#top" aria-label="Jacob McGreen, home">JM<span>.</span></a>
+        <a class="wordmark" href="#top" aria-label="Jacob McGreen, home">Jacob McGreen</a>
         <nav class="site-nav" aria-label="Primary navigation">
             <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
             <div class="nav-links" id="nav-links">
-                <a href="#work">Work</a>
+                <a href="#builds">Builds</a>
                 <a href="#lab">Lab</a>
-                <a href="#experience">Experience</a>
+                <a href="#path">Path</a>
                 <a href="#about">About</a>
                 <a href="#contact">Contact</a>
                 <button class="nav-action" type="button" data-open-resume>Résumé</button>
             </div>
         </nav>
-        <button class="theme-toggle" type="button" aria-pressed="false">
-            <span class="theme-label">Dark</span>
-            <span class="theme-dot" aria-hidden="true"></span>
-        </button>
     </header>
 
     <main id="main">
-        <section class="hero section-shell" id="top">
-            <div class="hero-copy reveal">
-                <p class="eyebrow">Jacob McGreen · Portfolio</p>
-                <h1>Enterprise AI and <em>software engineering.</em></h1>
-                <p class="hero-intro">Enterprise AI at Palo Alto Networks. B.S. Computer Science, University of Rochester, 2026.</p>
-                <div class="hero-actions">
-                    <a class="button button-primary" href="#work">Explore my work <span aria-hidden="true">↘</span></a>
-                    <button class="text-button" type="button" data-open-terminal>Open terminal <kbd>⌘ K</kbd></button>
-                </div>
+        <section class="hero" id="top">
+            <div class="hero-field" aria-hidden="true">
+                <img class="hero-image" src="images/OptionsPricer.png" alt="" width="3006" height="1292">
+                <div class="hero-veil"></div>
+                <div class="hero-grid"></div>
             </div>
-            <div class="hero-visual reveal">
-                <figure class="portrait-frame">
-                    <img src="images/hs.jpg" alt="Portrait of Jacob McGreen" width="1074" height="1397">
-                </figure>
-                <p class="portrait-note">Santa Clara, California</p>
-                <span class="index-mark" aria-hidden="true">01</span>
+            <div class="hero-copy">
+                <p class="brand reveal">Jacob McGreen</p>
+                <h1 class="reveal">I build systems that think in prices, paths, and code.</h1>
+                <p class="hero-lede reveal">Selected work in quantitative tools, search algorithms, and production software — with the process on the page so you can try it, not just read about it.</p>
+                <div class="hero-actions reveal">
+                    <a class="button button-primary" href="#builds">See the builds</a>
+                    <a class="button button-ghost" href="#lab">Try the lab</a>
+                </div>
             </div>
         </section>
 
-        <section class="work section-shell" id="work">
-            <div class="section-heading reveal">
-                <p class="eyebrow">Selected work</p>
-                <h2>Selected software projects.</h2>
-                <p>Financial modeling, machine learning, algorithms, and full-stack development.</p>
+        <section class="builds section-shell" id="builds">
+            <div class="section-intro reveal">
+                <p class="section-kicker">Builds</p>
+                <h2>Things worth opening.</h2>
+                <p class="section-lede">Live tools and competition work first. Product shipping second. Process stays visible — open the build, or run the lab below.</p>
             </div>
 
-            <div class="project-list">
-                <article class="project project-featured reveal">
-                    <a class="project-media" href="https://monte-carlo-options-pricing.vercel.app/" target="_blank" rel="noopener" aria-label="View Monte Carlo Options Pricing live site">
-                        <img src="images/OptionsPricer.png" alt="Monte Carlo options pricing interface" width="3006" height="1292">
-                        <span class="project-number">01</span>
-                    </a>
-                    <div class="project-body">
-                        <div class="project-title-row">
-                            <h3>Monte Carlo Options Pricing</h3>
-                            <a href="https://monte-carlo-options-pricing.vercel.app/" target="_blank" rel="noopener" aria-label="Open live site">↗</a>
-                        </div>
-                        <p>A simulation tool that models potential future option prices through repeated randomized market paths.</p>
-                        <ul class="tag-list" aria-label="Technologies"><li>Python</li><li>Next.js</li><li>React</li></ul>
-                    </div>
-                </article>
-
-                <div class="project-grid">
-                    <article class="project reveal">
-                        <a class="project-media project-media-square" href="https://github.com/jacobmcgreen/Finnov8-2024" target="_blank" rel="noopener" aria-label="View Finnov8 2024 on GitHub">
-                            <img src="images/finnov8.png" alt="Finnov8 2024 project presentation" width="500" height="500">
-                            <span class="project-number">02</span>
-                        </a>
-                        <div class="project-body">
-                            <div class="project-title-row"><h3>Finnov8 2024</h3><a href="https://github.com/jacobmcgreen/Finnov8-2024" target="_blank" rel="noopener" aria-label="Open GitHub repository">↗</a></div>
-                            <p>A Random Forest and XGBoost model for identifying signals in a company’s exit potential. Fourth overall in the regional competition.</p>
-                            <ul class="tag-list" aria-label="Technologies"><li>Python</li><li>XGBoost</li><li>Excel</li></ul>
-                        </div>
-                    </article>
-
-                    <article class="project project-offset reveal">
-                        <a class="project-media" href="https://github.com/jacobmcgreen/Connect4AI" target="_blank" rel="noopener" aria-label="View Connect Four AI on GitHub">
-                            <img src="images/connect4.png" alt="Connect Four game board" width="618" height="348">
-                            <span class="project-number">03</span>
-                        </a>
-                        <div class="project-body">
-                            <div class="project-title-row"><h3>Connect Four AI</h3><a href="https://github.com/jacobmcgreen/Connect4AI" target="_blank" rel="noopener" aria-label="Open GitHub repository">↗</a></div>
-                            <p>A strategic game agent built with Minimax and Alpha-Beta Pruning, organized with object-oriented Python.</p>
-                            <ul class="tag-list" aria-label="Technologies"><li>Python</li><li>Algorithms</li><li>OOP</li></ul>
-                        </div>
-                    </article>
+            <article class="build build-lead reveal">
+                <a class="build-visual" href="https://monte-carlo-options-pricing.vercel.app/" target="_blank" rel="noopener">
+                    <img src="images/OptionsPricer.png" alt="Monte Carlo options pricing interface" width="3006" height="1292">
+                </a>
+                <div class="build-meta">
+                    <p class="build-index">01 / Pricing</p>
+                    <h3><a href="https://monte-carlo-options-pricing.vercel.app/" target="_blank" rel="noopener">Monte Carlo Options Pricing</a></h3>
+                    <p>Browser-side simulation of option prices across randomized market paths — spot, strike, vol, and expiry as levers.</p>
+                    <ul class="tag-list" aria-label="Technologies">
+                        <li>Python</li>
+                        <li>Next.js</li>
+                        <li>React</li>
+                    </ul>
                 </div>
+            </article>
 
-                <article class="project project-wide reveal">
-                    <a class="project-media" href="https://shopunicycle.com/" target="_blank" rel="noopener" aria-label="View Unicycle live site">
-                        <img src="images/unicycle.png" alt="Unicycle student marketplace" width="1710" height="629">
-                        <span class="project-number">04</span>
+            <div class="build-pair">
+                <article class="build reveal">
+                    <a class="build-visual" href="https://github.com/jacobmcgreen/Finnov8-2024" target="_blank" rel="noopener">
+                        <img src="images/finnov8.png" alt="Finnov8 2024 project presentation" width="500" height="500">
                     </a>
-                    <div class="project-body">
-                        <div class="project-title-row"><h3>Unicycle</h3><a href="https://shopunicycle.com/" target="_blank" rel="noopener" aria-label="Open live site">↗</a></div>
-                        <p>A student marketplace for giving unwanted items a second life, built with authentication, cloud services, and a modern data layer.</p>
-                        <ul class="tag-list" aria-label="Technologies"><li>TypeScript</li><li>React</li><li>MongoDB</li><li>AWS</li></ul>
+                    <div class="build-meta">
+                        <p class="build-index">02 / Signals</p>
+                        <h3><a href="https://github.com/jacobmcgreen/Finnov8-2024" target="_blank" rel="noopener">Finnov8 2024</a></h3>
+                        <p>Random Forest and XGBoost models for exit-potential signals. Fourth overall in the regional competition.</p>
+                        <ul class="tag-list" aria-label="Technologies">
+                            <li>Python</li>
+                            <li>XGBoost</li>
+                            <li>Excel</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="build reveal">
+                    <a class="build-visual" href="https://github.com/jacobmcgreen/Connect4AI" target="_blank" rel="noopener">
+                        <img src="images/connect4.png" alt="Connect Four game board" width="618" height="348">
+                    </a>
+                    <div class="build-meta">
+                        <p class="build-index">03 / Search</p>
+                        <h3><a href="https://github.com/jacobmcgreen/Connect4AI" target="_blank" rel="noopener">Connect Four AI</a></h3>
+                        <p>Minimax with Alpha-Beta pruning as a strategic agent — the same search you can play against in the lab below.</p>
+                        <ul class="tag-list" aria-label="Technologies">
+                            <li>Python</li>
+                            <li>Algorithms</li>
+                            <li>OOP</li>
+                        </ul>
                     </div>
                 </article>
             </div>
+
+            <article class="build build-ship reveal">
+                <a class="build-visual" href="https://shopunicycle.com/" target="_blank" rel="noopener">
+                    <img src="images/unicycle.png" alt="Unicycle student marketplace" width="1710" height="629">
+                </a>
+                <div class="build-meta">
+                    <p class="build-index">04 / Ship</p>
+                    <h3><a href="https://shopunicycle.com/" target="_blank" rel="noopener">Unicycle</a></h3>
+                    <p>A live student marketplace with auth, cloud hosting, and a modern data layer — built and operated in production.</p>
+                    <ul class="tag-list" aria-label="Technologies">
+                        <li>TypeScript</li>
+                        <li>React</li>
+                        <li>MongoDB</li>
+                        <li>AWS</li>
+                    </ul>
+                </div>
+            </article>
         </section>
 
         <section class="lab section-shell" id="lab">
-            <div class="lab-heading reveal">
-                <div>
-                    <p class="eyebrow">Project lab</p>
-                    <h2>Interactive project demos.</h2>
-                </div>
-                <div class="lab-tabs" role="tablist" aria-label="Interactive project demos">
-                    <button type="button" role="tab" aria-selected="true" aria-controls="options-demo" id="options-tab">Options pricer</button>
-                    <button type="button" role="tab" aria-selected="false" aria-controls="connect-demo" id="connect-tab">Connect Four</button>
-                </div>
+            <div class="section-intro reveal">
+                <p class="section-kicker">Lab</p>
+                <h2>Run it in the browser.</h2>
+                <p class="section-lede">Two interactive demos pulled from the builds above. No install — adjust assumptions or play a search tree.</p>
+            </div>
+
+            <div class="lab-tabs reveal" role="tablist" aria-label="Interactive project demos">
+                <button type="button" role="tab" aria-selected="true" aria-controls="options-demo" id="options-tab">Options pricer</button>
+                <button type="button" role="tab" aria-selected="false" aria-controls="connect-demo" id="connect-tab">Connect Four</button>
             </div>
 
             <div class="demo-panel reveal" id="options-demo" role="tabpanel" aria-labelledby="options-tab">
                 <div class="demo-controls">
-                    <div class="demo-title"><span>01</span><h3>Monte Carlo playground</h3></div>
+                    <div class="demo-title">
+                        <p class="build-index">Simulation</p>
+                        <h3>Monte Carlo playground</h3>
+                    </div>
                     <p>Adjust the market assumptions and run a lightweight simulation directly in the browser.</p>
-                    <label>Spot price <output id="spot-output">$100</output><input id="spot" type="range" min="50" max="150" value="100"></label>
-                    <label>Strike price <output id="strike-output">$105</output><input id="strike" type="range" min="50" max="150" value="105"></label>
-                    <label>Volatility <output id="vol-output">25%</output><input id="volatility" type="range" min="5" max="80" value="25"></label>
-                    <label>Days to expiry <output id="days-output">90</output><input id="days" type="range" min="7" max="365" value="90"></label>
-                    <button class="button button-primary" id="run-simulation" type="button">Run simulation <span aria-hidden="true">→</span></button>
+                    <label>Spot price <output id="spot-output">$100</output>
+                        <input id="spot" type="range" min="50" max="150" value="100">
+                    </label>
+                    <label>Strike price <output id="strike-output">$105</output>
+                        <input id="strike" type="range" min="50" max="150" value="105">
+                    </label>
+                    <label>Volatility <output id="vol-output">25%</output>
+                        <input id="volatility" type="range" min="5" max="80" value="25">
+                    </label>
+                    <label>Days to expiry <output id="days-output">90</output>
+                        <input id="days" type="range" min="7" max="365" value="90">
+                    </label>
+                    <button class="button button-primary" id="run-simulation" type="button">Run simulation</button>
                 </div>
                 <div class="demo-output" aria-live="polite">
-                    <div class="price-readout"><span>Estimated call value</span><strong id="option-price">$4.68</strong><small id="simulation-note">10,000 simulated paths</small></div>
+                    <div class="price-readout">
+                        <span>Estimated call value</span>
+                        <strong id="option-price">$4.68</strong>
+                        <small id="simulation-note">10,000 simulated paths</small>
+                    </div>
                     <canvas id="price-chart" width="760" height="380" aria-label="Distribution of simulated terminal prices"></canvas>
-                    <div class="chart-axis"><span>Lower terminal price</span><span>Higher terminal price</span></div>
+                    <div class="chart-axis">
+                        <span>Lower terminal price</span>
+                        <span>Higher terminal price</span>
+                    </div>
                 </div>
             </div>
 
             <div class="demo-panel connect-panel" id="connect-demo" role="tabpanel" aria-labelledby="connect-tab" hidden>
                 <div class="demo-controls">
-                    <div class="demo-title"><span>02</span><h3>Play the search tree</h3></div>
-                    <p>You play orange. The browser runs depth-6 Minimax with Alpha-Beta pruning—the hardest standard setting in the original project.</p>
-                    <div class="difficulty-badge">Hardest · Depth 6</div>
-                    <div class="game-status" id="game-status" aria-live="polite">Your move</div>
-                    <button class="button button-outline" id="reset-game" type="button">Reset board</button>
+                    <div class="demo-title">
+                        <p class="build-index">Search tree</p>
+                        <h3>Play depth-6 Minimax</h3>
+                    </div>
+                    <p>You play teal. The browser runs Minimax with Alpha-Beta pruning at depth 6 — the hardest standard setting from the original project.</p>
+                    <p class="game-status" id="game-status" aria-live="polite">Your move</p>
+                    <button class="button button-ghost" id="reset-game" type="button">Reset board</button>
                 </div>
                 <div class="connect-wrap">
                     <div class="connect-board" id="connect-board" role="grid" aria-label="Connect Four board"></div>
@@ -158,98 +187,152 @@
             </div>
         </section>
 
-        <section class="experience section-shell" id="experience">
-            <div class="experience-heading reveal">
-                <p class="eyebrow">Experience</p>
-                <h2>Software engineering experience.</h2>
+        <section class="path section-shell" id="path">
+            <div class="section-intro reveal">
+                <p class="section-kicker">Path</p>
+                <h2>Where the work has been.</h2>
             </div>
-            <div class="timeline">
-                <article class="timeline-item timeline-current reveal">
-                    <div class="timeline-meta"><span>Now</span><p>Current role</p></div>
-                    <div class="timeline-role"><p>Palo Alto Networks</p><h3>Enterprise AI</h3><p class="location">HQ · Santa Clara, California</p></div>
-                    <div class="timeline-detail"><p>Currently working in Enterprise AI at Palo Alto Networks.</p></div>
-                </article>
-                <article class="timeline-item reveal">
-                    <div class="timeline-meta"><span>2025</span><p>May — Aug</p></div>
-                    <div class="timeline-role"><p>Principal Financial Group</p><h3>Software Engineering Intern</h3><p class="location">Des Moines, Iowa</p></div>
-                    <div class="timeline-detail"><p>Built a production internal AI service with Python, AWS, and ServiceNow that replaced a third-party tool and reduced annual licensing costs by <strong>$519K</strong>.</p><ul><li>Java and Spring microservices</li><li>75+ JUnit tests</li><li>95%+ coverage across three services</li></ul></div>
-                </article>
-                <article class="timeline-item reveal">
-                    <div class="timeline-meta"><span>2024—25</span><p>Jun — Feb</p></div>
-                    <div class="timeline-role"><p>The Mutual Group</p><h3>Applications Development Intern</h3><p class="location">Des Moines / Remote</p></div>
-                    <div class="timeline-detail"><p>Improved accessibility, database connectivity, and search workflows across internal insurance systems supporting more than <strong>100,000 claims</strong>.</p><ul><li>TypeScript and Angular</li><li>RESTful endpoints</li><li>React, Java, and SQL modernization</li></ul></div>
-                </article>
-                <article class="timeline-item reveal">
-                    <div class="timeline-meta"><span>2024—25</span><p>Feb — Feb</p></div>
-                    <div class="timeline-role"><p>RocLab</p><h3>Back End Engineer</h3><p class="location">Rochester, New York</p></div>
-                    <div class="timeline-detail"><p>Shipped TypeScript backend features for Unicycle, a live student marketplace serving <strong>500+ users</strong>, and led its hosting infrastructure migration.</p><ul><li>Listings, uploads, and search</li><li>AWS deployment</li><li>Authentication and production stability</li></ul></div>
-                </article>
-            </div>
+            <ol class="path-list">
+                <li class="path-item reveal">
+                    <p class="path-when">Now</p>
+                    <div class="path-body">
+                        <h3>Enterprise AI · Palo Alto Networks</h3>
+                        <p class="path-where">Santa Clara, California</p>
+                        <p>Currently working in Enterprise AI at Palo Alto Networks.</p>
+                    </div>
+                </li>
+                <li class="path-item reveal">
+                    <p class="path-when">2025</p>
+                    <div class="path-body">
+                        <h3>Software Engineering Intern · Principal Financial Group</h3>
+                        <p class="path-where">Des Moines, Iowa</p>
+                        <p>Built a production internal AI service with Python, AWS, and ServiceNow that replaced a third-party tool and reduced annual licensing costs by $519K.</p>
+                    </div>
+                </li>
+                <li class="path-item reveal">
+                    <p class="path-when">2024—25</p>
+                    <div class="path-body">
+                        <h3>Applications Development Intern · The Mutual Group</h3>
+                        <p class="path-where">Des Moines / Remote</p>
+                        <p>Improved accessibility, database connectivity, and search workflows across internal insurance systems supporting more than 100,000 claims.</p>
+                    </div>
+                </li>
+                <li class="path-item reveal">
+                    <p class="path-when">2024—25</p>
+                    <div class="path-body">
+                        <h3>Back End Engineer · RocLab</h3>
+                        <p class="path-where">Rochester, New York</p>
+                        <p>Shipped TypeScript backend features for Unicycle, a live student marketplace serving 500+ users, and led its hosting infrastructure migration.</p>
+                    </div>
+                </li>
+            </ol>
         </section>
 
         <section class="about section-shell" id="about">
-            <div class="about-lead reveal">
-                <p class="eyebrow">About</p>
-                <h2>Background and technical skills.</h2>
+            <div class="about-visual reveal">
+                <img src="images/hs.jpg" alt="Portrait of Jacob McGreen" width="1074" height="1397">
             </div>
             <div class="about-copy reveal">
-                <p class="large-copy">Computer Science senior at the University of Rochester. Current Enterprise AI role at Palo Alto Networks.</p>
-                <p>Experience includes production AI services, financial platforms, insurance systems, AWS infrastructure, backend development, and full-stack applications.</p>
-                <button class="button button-outline" type="button" data-open-resume>View my résumé <span aria-hidden="true">↗</span></button>
-            </div>
-
-            <div class="capabilities reveal">
-                <div class="capability"><span>01</span><h3>Backend</h3><p>C++, Java, Python, SQL, TypeScript, MongoDB, REST APIs</p></div>
-                <div class="capability"><span>02</span><h3>Frontend</h3><p>HTML, CSS, JavaScript, React, Next.js</p></div>
-                <div class="capability"><span>03</span><h3>Cloud & delivery</h3><p>Git, CI/CD, AWS Lambda, S3, Bedrock, and EC2</p></div>
+                <p class="section-kicker">About</p>
+                <h2>CS at Rochester. Building at the edge of AI and markets.</h2>
+                <p>Computer Science senior at the University of Rochester. Current Enterprise AI role at Palo Alto Networks. Experience spans production AI services, financial platforms, backend systems, and full-stack apps.</p>
+                <dl class="skill-strip">
+                    <div>
+                        <dt>Languages</dt>
+                        <dd>C++, Java, Python, SQL, TypeScript</dd>
+                    </div>
+                    <div>
+                        <dt>Stack</dt>
+                        <dd>React, Next.js, Spring, AWS, MongoDB</dd>
+                    </div>
+                </dl>
+                <button class="button button-ghost" type="button" data-open-resume>View résumé</button>
             </div>
         </section>
 
         <section class="contact section-shell" id="contact">
             <div class="contact-intro reveal">
-                <p class="eyebrow">Get in touch</p>
-                <h2>Contact Jacob.</h2>
-                <p>Send an email or request a 30-minute call.</p>
-                <a class="contact-email" href="mailto:jmcgreen07@gmail.com">jmcgreen07@gmail.com <span aria-hidden="true">↗</span></a>
-                <button class="button button-outline schedule-button" type="button" data-open-schedule>Request a 30-minute call <span aria-hidden="true">→</span></button>
+                <p class="section-kicker">Contact</p>
+                <h2>Start a thread.</h2>
+                <p class="section-lede">Email works best. Or request a short call if you want to talk builds, markets, or research tooling.</p>
+                <a class="contact-email" href="mailto:jmcgreen07@gmail.com">jmcgreen07@gmail.com</a>
+                <div class="contact-actions">
+                    <button class="button button-ghost" type="button" data-open-schedule>Request a 30-minute call</button>
+                    <button class="text-button" type="button" data-open-terminal>Open terminal <kbd>⌘ K</kbd></button>
+                </div>
             </div>
             <form class="contact-form reveal" action="https://formspree.io/f/mjkejwwv" method="post">
                 <label>Name<input type="text" name="name" autocomplete="name" required></label>
                 <label>Email<input type="email" name="email" autocomplete="email" required></label>
                 <label>Message<textarea name="message" rows="5" required></textarea></label>
-                <button class="button button-primary" type="submit">Send message <span aria-hidden="true">↗</span></button>
+                <button class="button button-primary" type="submit">Send message</button>
             </form>
         </section>
     </main>
 
     <dialog class="feature-dialog resume-dialog" id="resume-dialog">
-        <div class="dialog-bar"><div><span>Document 01</span><strong>Jacob McGreen — Résumé</strong></div><div><a href="assets/JMcGreen Resume.pdf" download>Download</a><button type="button" data-close-dialog aria-label="Close résumé viewer">Close</button></div></div>
+        <div class="dialog-bar">
+            <div>
+                <span>Résumé</span>
+                <strong>Jacob McGreen</strong>
+            </div>
+            <div>
+                <a href="assets/JMcGreen Resume.pdf" download>Download</a>
+                <button type="button" data-close-dialog aria-label="Close résumé viewer">Close</button>
+            </div>
+        </div>
         <iframe src="assets/JMcGreen Resume.pdf#view=FitH" title="Jacob McGreen résumé"></iframe>
     </dialog>
 
     <dialog class="feature-dialog schedule-dialog" id="schedule-dialog">
         <button class="dialog-close" type="button" data-close-dialog aria-label="Close scheduling">Close</button>
-        <div class="schedule-copy"><p class="eyebrow">Schedule</p><h2>Find a time to talk.</h2><p>Choose a date and time. This creates a pre-filled meeting request—nothing is booked until we confirm by email.</p></div>
+        <div class="schedule-copy">
+            <p class="section-kicker">Schedule</p>
+            <h2>Find a time.</h2>
+            <p>Choose a date and time. This creates a pre-filled meeting request — nothing is booked until we confirm by email.</p>
+        </div>
         <form id="schedule-form">
-            <fieldset><legend>1. Pick a day</legend><div class="date-options" id="date-options"></div></fieldset>
-            <fieldset><legend>2. Pick a time <span>Pacific time</span></legend><div class="time-options"><label><input type="radio" name="time" value="10:00 AM" required><span>10:00 AM</span></label><label><input type="radio" name="time" value="1:00 PM"><span>1:00 PM</span></label><label><input type="radio" name="time" value="3:30 PM"><span>3:30 PM</span></label></div></fieldset>
+            <fieldset>
+                <legend>1. Pick a day</legend>
+                <div class="date-options" id="date-options"></div>
+            </fieldset>
+            <fieldset>
+                <legend>2. Pick a time <span>Pacific</span></legend>
+                <div class="time-options">
+                    <label><input type="radio" name="time" value="10:00 AM" required><span>10:00 AM</span></label>
+                    <label><input type="radio" name="time" value="1:00 PM"><span>1:00 PM</span></label>
+                    <label><input type="radio" name="time" value="3:30 PM"><span>3:30 PM</span></label>
+                </div>
+            </fieldset>
             <label class="schedule-name">Your name<input type="text" name="visitorName" autocomplete="name" required></label>
-            <button class="button button-primary" type="submit">Prepare request <span aria-hidden="true">↗</span></button>
+            <button class="button button-primary" type="submit">Prepare request</button>
         </form>
     </dialog>
 
     <dialog class="terminal-dialog" id="terminal-dialog">
-        <div class="terminal-bar"><span>jacob@portfolio:~</span><button type="button" data-close-dialog aria-label="Close terminal">×</button></div>
-        <div class="terminal-output" id="terminal-output" aria-live="polite">
-            <p>Jacob McGreen portfolio shell</p><p>Type <strong>help</strong> to see available commands.</p>
+        <div class="terminal-bar">
+            <span>jacob@builds:~</span>
+            <button type="button" data-close-dialog aria-label="Close terminal">Close</button>
         </div>
-        <form class="terminal-form" id="terminal-form"><label><span>visitor@portfolio:~$</span><input id="terminal-input" type="text" autocomplete="off" spellcheck="false" aria-label="Terminal command"></label></form>
+        <div class="terminal-output" id="terminal-output" aria-live="polite">
+            <p>Jacob McGreen · portfolio shell</p>
+            <p>Type <strong>help</strong> for commands.</p>
+        </div>
+        <form class="terminal-form" id="terminal-form">
+            <label>
+                <span>visitor@builds:~$</span>
+                <input id="terminal-input" type="text" autocomplete="off" spellcheck="false" aria-label="Terminal command">
+            </label>
+        </form>
     </dialog>
 
     <footer class="site-footer">
-        <a class="wordmark" href="#top" aria-label="Back to top">JM<span>.</span></a>
-        <p>© <span id="year">2026</span> Jacob McGreen</p>
-        <div><a href="https://github.com/jacobmcgreen" target="_blank" rel="noopener">GitHub</a><a href="mailto:jmcgreen07@gmail.com">Email</a></div>
+        <a class="wordmark" href="#top" aria-label="Back to top">Jacob McGreen</a>
+        <p>© <span id="year">2026</span></p>
+        <div>
+            <a href="https://github.com/jacobmcgreen" target="_blank" rel="noopener">GitHub</a>
+            <a href="mailto:jmcgreen07@gmail.com">Email</a>
+        </div>
     </footer>
 </body>
 </html>
