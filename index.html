@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Manrope:wght@400;500;600&family=Rethink+Sans:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
-    <script src="js/script.js" defer></script>
+    <script type="module" src="js/script.js"></script>
 </head>
 <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -41,7 +41,33 @@
                 <a href="https://github.com/jacobmcgreen" target="_blank" rel="noopener"><span>GitHub</span></a>
                 <a href="assets/JMcGreen%20Resume.pdf" target="_blank" rel="noopener"><span>Résumé</span></a>
             </nav>
+
+            <section class="guestbook settle" style="--d: 5" aria-label="One-word guestbook">
+                <div class="guestbook-wall" id="guestbook-wall"></div>
+                <form class="guestbook-form" id="guestbook-form" autocomplete="off">
+                    <label class="visually-hidden" for="guestbook-word">Leave one word</label>
+                    <input
+                        id="guestbook-word"
+                        name="word"
+                        type="text"
+                        maxlength="16"
+                        inputmode="text"
+                        spellcheck="false"
+                        autocapitalize="off"
+                        placeholder="one word"
+                        aria-describedby="guestbook-hint"
+                    >
+                    <span id="guestbook-hint" class="guestbook-hint" aria-live="polite"></span>
+                </form>
+            </section>
         </main>
+    </div>
+
+    <div class="commit-tape" id="commit-tape" hidden>
+        <div class="commit-tape-fade" aria-hidden="true"></div>
+        <div class="commit-tape-inner">
+            <div class="commit-tape-track" id="commit-tape-track"></div>
+        </div>
     </div>
 </body>
 </html>
