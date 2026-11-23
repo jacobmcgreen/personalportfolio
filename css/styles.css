@@ -27,12 +27,21 @@
     --sky-veil: rgba(8, 10, 22, 0.18);
     --sky-horizon: rgba(255, 186, 150, 0.22);
     --sky-dim: 0;
+    --sky-dawn: 0;
+    --sky-morning: 0;
+    --sky-high: 0;
+    --sky-golden: 0;
+    --sky-sunset: 0;
+    --sky-blue: 0;
+    --sky-night: 1;
     --sun-color: rgba(255, 236, 210, 0.95);
     --sun-glow: rgba(255, 176, 130, 0.45);
     --sun-x: 18%;
     --sun-y: 58%;
     --sun-scale: 1;
     --sun-soft: 1;
+    --moon-phase: 0.3;
+    --moon-shade: 0.28;
     --display: "Rethink Sans", "Avenir Next", "Segoe UI", sans-serif;
     --sans: "Manrope", "Avenir Next", "Segoe UI", sans-serif;
     --mono: "IBM Plex Mono", ui-monospace, monospace;
@@ -123,6 +132,11 @@ body {
     inset: 0;
 }
 
+.bay-sky-photos {
+    position: absolute;
+    inset: 0;
+}
+
 .bay-sky-photo {
     position: absolute;
     inset: 0;
@@ -132,7 +146,18 @@ body {
     object-position: center 42%;
     transform: scale(1.02);
     filter: saturate(0.92) contrast(1.02);
+    opacity: 0;
+    transition: opacity var(--sky-shift) var(--ease);
+    will-change: opacity;
 }
+
+.bay-sky-photo[data-phase="dawn"] { opacity: var(--sky-dawn, 0); }
+.bay-sky-photo[data-phase="morning"] { opacity: var(--sky-morning, 0); }
+.bay-sky-photo[data-phase="high"] { opacity: var(--sky-high, 0); }
+.bay-sky-photo[data-phase="golden"] { opacity: var(--sky-golden, 0); }
+.bay-sky-photo[data-phase="sunset"] { opacity: var(--sky-sunset, 0); }
+.bay-sky-photo[data-phase="blue"] { opacity: var(--sky-blue, 0); }
+.bay-sky-photo[data-phase="night"] { opacity: var(--sky-night, 1); }
 
 .bay-sky-dim {
     position: absolute;
@@ -219,6 +244,67 @@ body {
         0 0 3.5rem color-mix(in srgb, var(--sun-glow) 55%, transparent);
 }
 
+.bay-moon {
+    position: absolute;
+    left: var(--sun-x);
+    top: var(--sun-y);
+    width: 0;
+    height: 0;
+    transform: translate(-50%, -50%) scale(var(--sun-scale, 1));
+    opacity: 0;
+    transition:
+        left 1.2s var(--ease),
+        top 1.2s var(--ease),
+        opacity 1.4s var(--ease),
+        transform 1.2s var(--ease);
+    will-change: left, top, opacity;
+}
+
+.bay-moon[data-visible="true"] {
+    opacity: 1;
+}
+
+.bay-moon-glow {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: clamp(4rem, 12vw, 8rem);
+    height: clamp(4rem, 12vw, 8rem);
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        rgba(220, 228, 255, 0.28) 0%,
+        rgba(180, 190, 220, 0.08) 45%,
+        transparent 70%
+    );
+    filter: blur(10px);
+}
+
+.bay-moon-disk {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: clamp(0.55rem, 1.05vw, 0.9rem);
+    height: clamp(0.55rem, 1.05vw, 0.9rem);
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background:
+        radial-gradient(
+            circle at calc(var(--moon-shade, 0.28) * 100%) 40%,
+            transparent 38%,
+            rgba(8, 10, 18, 0.92) 52%,
+            rgba(8, 10, 18, 0.96) 100%
+        ),
+        radial-gradient(
+            circle at 35% 30%,
+            #f4f2ea 0%,
+            #d8d6cc 55%,
+            #a8a69c 100%
+        );
+    box-shadow: 0 0 0.8rem rgba(220, 225, 240, 0.25);
+}
+
 .bay-sky-veil {
     position: absolute;
     inset: 0;
@@ -238,7 +324,48 @@ body {
             transparent 100%
         ),
         var(--sky-veil);
-    transition: background var(--sky-shift) var(--ease);
+    transition: background var(--sky-shift) var(--ease), opacity var(--sky-shift) var(--ease);
+}
+
+body.sky-light .bay-sky-veil {
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.28) 0%,
+            transparent 30%,
+            transparent 60%,
+            rgba(20, 24, 32, 0.18) 100%
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.42) 0%,
+            rgba(255, 255, 255, 0.18) 28%,
+            transparent 52%,
+            transparent 100%
+        );
+}
+
+body.sky-light .links a:hover,
+body.sky-light .links a:focus-visible {
+    color: #000000;
+}
+
+body.sky-light .guestbook-word {
+    color: color-mix(in srgb, var(--ink) 70%, var(--muted));
+}
+
+body.sky-light .commit-item {
+    color: color-mix(in srgb, var(--ink) 55%, transparent);
+    opacity: 0.45;
+}
+
+body.sky-light .commit-tape {
+    background: linear-gradient(
+        180deg,
+        transparent 0%,
+        color-mix(in srgb, var(--bg) 55%, transparent) 55%,
+        color-mix(in srgb, var(--bg) 75%, transparent) 100%
+    );
 }
 
 .bay-sky-fog {
@@ -590,7 +717,9 @@ body {
         display: none;
     }
 
-    .bay-sun {
+    .bay-sun,
+    .bay-moon,
+    .bay-sky-photo {
         transition: none;
     }
 

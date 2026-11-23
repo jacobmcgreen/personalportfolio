@@ -17,20 +17,24 @@
 
     <div class="field" aria-hidden="true">
         <div class="bay-sky">
-            <img
-                class="bay-sky-photo"
-                src="images/bay-sky-dawn.jpg"
-                alt=""
-                width="1280"
-                height="720"
-                decoding="async"
-                fetchpriority="high"
-            >
+            <div class="bay-sky-photos">
+                <img class="bay-sky-photo" data-phase="dawn" src="images/bay-sky/dawn.jpg" alt="" width="1280" height="720" decoding="async" fetchpriority="high">
+                <img class="bay-sky-photo" data-phase="morning" src="images/bay-sky/morning.jpg" alt="" width="1280" height="720" decoding="async" loading="lazy">
+                <img class="bay-sky-photo" data-phase="high" src="images/bay-sky/high.jpg" alt="" width="1280" height="720" decoding="async" loading="lazy">
+                <img class="bay-sky-photo" data-phase="golden" src="images/bay-sky/golden.jpg" alt="" width="1280" height="720" decoding="async" loading="lazy">
+                <img class="bay-sky-photo" data-phase="sunset" src="images/bay-sky/sunset.jpg" alt="" width="1280" height="720" decoding="async" loading="lazy">
+                <img class="bay-sky-photo" data-phase="blue" src="images/bay-sky/blue.jpg" alt="" width="1280" height="720" decoding="async" loading="lazy">
+                <img class="bay-sky-photo" data-phase="night" src="images/bay-sky/night.jpg" alt="" width="1280" height="720" decoding="async" loading="lazy">
+            </div>
             <div class="bay-sky-dim"></div>
             <div class="bay-sky-horizon"></div>
             <div class="bay-sun" id="bay-sun" data-visible="false">
                 <span class="bay-sun-glow"></span>
                 <span class="bay-sun-disk"></span>
+            </div>
+            <div class="bay-moon" id="bay-moon" data-visible="false">
+                <span class="bay-moon-glow"></span>
+                <span class="bay-moon-disk"></span>
             </div>
             <div class="bay-sky-veil"></div>
             <div class="bay-sky-fog"></div>
