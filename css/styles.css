@@ -1,78 +1,44 @@
 @property --bg {
     syntax: "<color>";
     inherits: true;
-    initial-value: #0a0a0a;
+    initial-value: #0b0d18;
 }
 
 @property --ink {
     syntax: "<color>";
     inherits: true;
-    initial-value: #f5f5f7;
+    initial-value: #f3f1f4;
 }
 
 @property --muted {
     syntax: "<color>";
     inherits: true;
-    initial-value: #a2a2a2;
-}
-
-@property --field-a {
-    syntax: "<color>";
-    inherits: true;
-    initial-value: rgba(255, 255, 255, 0.07);
-}
-
-@property --field-b {
-    syntax: "<color>";
-    inherits: true;
-    initial-value: rgba(255, 255, 255, 0.035);
-}
-
-@property --presence {
-    syntax: "<color>";
-    inherits: true;
-    initial-value: rgba(255, 255, 255, 0.18);
-}
-
-@property --presence-soft {
-    syntax: "<color>";
-    inherits: true;
-    initial-value: rgba(255, 255, 255, 0.06);
-}
-
-@property --wash-top {
-    syntax: "<color>";
-    inherits: true;
-    initial-value: rgba(10, 10, 10, 0.15);
-}
-
-@property --wash-bottom {
-    syntax: "<color>";
-    inherits: true;
-    initial-value: rgba(5, 5, 5, 0.55);
+    initial-value: #b4aeb8;
 }
 
 :root {
-    --bg: #0a0a0a;
+    --bg: #0b0d18;
     --surface: #121212;
-    --ink: #f5f5f7;
-    --muted: #a2a2a2;
+    --ink: #f3f1f4;
+    --muted: #b4aeb8;
     --outline: #444444;
     --glass: rgba(255, 255, 255, 0.05);
     --glass-line: rgba(255, 255, 255, 0.1);
-    --field-a: rgba(255, 255, 255, 0.07);
-    --field-b: rgba(255, 255, 255, 0.035);
-    --field-grad: linear-gradient(160deg, #121212 0%, #0a0a0a 48%, #050505 100%);
-    --presence: rgba(255, 255, 255, 0.18);
-    --presence-soft: rgba(255, 255, 255, 0.06);
-    --wash-top: rgba(10, 10, 10, 0.15);
-    --wash-bottom: rgba(5, 5, 5, 0.55);
+    --sky-veil: rgba(8, 10, 22, 0.18);
+    --sky-horizon: rgba(255, 186, 150, 0.22);
+    --sky-dim: 0;
+    --sun-color: rgba(255, 236, 210, 0.95);
+    --sun-glow: rgba(255, 176, 130, 0.45);
+    --sun-x: 18%;
+    --sun-y: 58%;
+    --sun-scale: 1;
+    --sun-soft: 1;
     --display: "Rethink Sans", "Avenir Next", "Segoe UI", sans-serif;
     --sans: "Manrope", "Avenir Next", "Segoe UI", sans-serif;
     --mono: "IBM Plex Mono", ui-monospace, monospace;
     --ease: cubic-bezier(0.22, 1, 0.36, 1);
     --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-    --sky-shift: 10s;
+    --sky-shift: 8s;
     color-scheme: dark;
 }
 
@@ -81,12 +47,10 @@ html {
         --bg var(--sky-shift) var(--ease),
         --ink var(--sky-shift) var(--ease),
         --muted var(--sky-shift) var(--ease),
-        --field-a var(--sky-shift) var(--ease),
-        --field-b var(--sky-shift) var(--ease),
-        --presence var(--sky-shift) var(--ease),
-        --presence-soft var(--sky-shift) var(--ease),
-        --wash-top var(--sky-shift) var(--ease),
-        --wash-bottom var(--sky-shift) var(--ease);
+        --sky-veil var(--sky-shift) var(--ease),
+        --sky-horizon var(--sky-shift) var(--ease),
+        --sun-color var(--sky-shift) var(--ease),
+        --sun-glow var(--sky-shift) var(--ease);
 }
 
 *,
@@ -154,46 +118,147 @@ body {
     transition: background-color var(--sky-shift) var(--ease);
 }
 
-.field-base {
+.bay-sky {
     position: absolute;
-    inset: -8%;
-    background:
-        radial-gradient(90% 70% at 78% 28%, var(--field-a) 0%, transparent 55%),
-        radial-gradient(70% 60% at 18% 82%, var(--field-b) 0%, transparent 50%),
-        var(--field-grad);
-    animation: field-breathe 32s var(--ease) infinite alternate;
-    transition: opacity var(--sky-shift) var(--ease);
+    inset: 0;
 }
 
-.field-wash {
+.bay-sky-photo {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 42%;
+    transform: scale(1.02);
+    filter: saturate(0.92) contrast(1.02);
+}
+
+.bay-sky-dim {
+    position: absolute;
+    inset: 0;
+    background: rgba(4, 6, 14, var(--sky-dim));
+    transition: background var(--sky-shift) var(--ease);
+}
+
+.bay-sky-horizon {
     position: absolute;
     inset: 0;
     background:
-        linear-gradient(180deg, var(--wash-top) 0%, transparent 30%, transparent 65%, var(--wash-bottom) 100%),
-        radial-gradient(55% 45% at 70% 45%, transparent 0%, rgba(0, 0, 0, 0.35) 100%);
-    transition: opacity calc(var(--sky-shift) * 0.8) var(--ease);
-}
-
-.field-presence {
-    position: absolute;
-    width: min(56vw, 42rem);
-    height: min(56vw, 42rem);
-    top: 10%;
-    right: -4%;
-    border-radius: 45% 55% 48% 52%;
-    background:
-        radial-gradient(circle at 42% 40%, var(--presence) 0%, var(--presence-soft) 32%, transparent 66%);
-    filter: blur(32px);
+        radial-gradient(
+            55% 28% at var(--sun-x) calc(var(--sun-y) + 4%),
+            var(--sky-horizon) 0%,
+            transparent 70%
+        ),
+        linear-gradient(
+            180deg,
+            transparent 42%,
+            color-mix(in srgb, var(--sky-horizon) 55%, transparent) 58%,
+            transparent 72%
+        );
     opacity: 0.9;
-    animation: presence-drift 24s var(--ease) infinite alternate;
-    transform-origin: 55% 45%;
     transition: background var(--sky-shift) var(--ease), opacity var(--sky-shift) var(--ease);
 }
 
-.field-grain {
+.bay-sun {
+    position: absolute;
+    left: var(--sun-x);
+    top: var(--sun-y);
+    width: 0;
+    height: 0;
+    transform: translate(-50%, -50%) scale(var(--sun-scale));
+    opacity: 0;
+    transition:
+        left 1.2s var(--ease),
+        top 1.2s var(--ease),
+        opacity 1.4s var(--ease),
+        transform 1.2s var(--ease);
+    will-change: left, top, opacity;
+}
+
+.bay-sun[data-visible="true"] {
+    opacity: 1;
+}
+
+.bay-sun-glow {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: clamp(11rem, 34vw, 22rem);
+    height: clamp(11rem, 34vw, 22rem);
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        var(--sun-glow) 0%,
+        color-mix(in srgb, var(--sun-glow) 40%, transparent) 32%,
+        transparent 68%
+    );
+    filter: blur(calc(14px + 16px * var(--sun-soft)));
+    opacity: calc(0.62 + 0.3 * var(--sun-soft));
+}
+
+.bay-sun-disk {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: clamp(0.7rem, 1.35vw, 1.15rem);
+    height: clamp(0.7rem, 1.35vw, 1.15rem);
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: radial-gradient(
+        circle at 40% 35%,
+        #fffaf0 0%,
+        var(--sun-color) 45%,
+        color-mix(in srgb, var(--sun-color) 40%, transparent) 100%
+    );
+    filter: blur(0.35px);
+    box-shadow:
+        0 0 0.55rem color-mix(in srgb, var(--sun-color) 70%, transparent),
+        0 0 1.8rem var(--sun-glow),
+        0 0 3.5rem color-mix(in srgb, var(--sun-glow) 55%, transparent);
+}
+
+.bay-sky-veil {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(
+            180deg,
+            color-mix(in srgb, var(--sky-veil) 90%, transparent) 0%,
+            transparent 28%,
+            transparent 55%,
+            rgba(4, 5, 12, 0.5) 100%
+        ),
+        linear-gradient(
+            90deg,
+            rgba(6, 8, 18, 0.48) 0%,
+            rgba(6, 8, 18, 0.22) 22%,
+            transparent 46%,
+            transparent 100%
+        ),
+        var(--sky-veil);
+    transition: background var(--sky-shift) var(--ease);
+}
+
+.bay-sky-fog {
+    position: absolute;
+    left: -5%;
+    right: -5%;
+    bottom: 8%;
+    height: 38%;
+    background:
+        radial-gradient(60% 80% at 40% 60%, rgba(180, 170, 190, 0.12) 0%, transparent 70%),
+        radial-gradient(50% 70% at 70% 70%, rgba(160, 155, 175, 0.1) 0%, transparent 65%);
+    filter: blur(18px);
+    opacity: 0.7;
+    animation: fog-drift 40s var(--ease) infinite alternate;
+}
+
+.bay-sky-grain {
     position: absolute;
     inset: -20%;
-    opacity: 0.22;
+    opacity: 0.16;
     mix-blend-mode: overlay;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.65'/%3E%3C/svg%3E");
     background-size: 160px 160px;
@@ -204,33 +269,21 @@ body {
     position: relative;
     z-index: 1;
     display: grid;
-    grid-template-rows: auto 1fr;
     min-height: 100svh;
     padding:
-        clamp(1.25rem, 3vw, 1.75rem)
+        clamp(1.5rem, 4vw, 2.5rem)
         clamp(1.25rem, 5vw, 3.5rem)
         clamp(3.25rem, 6vw, 4.5rem);
 }
 
-.mark {
-    margin: 0;
-    width: fit-content;
-    color: var(--ink);
-    font-family: var(--display);
-    font-size: 0.8125rem;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    opacity: 0.72;
-    transition: color var(--sky-shift) var(--ease);
-}
-
 .holding {
     display: grid;
-    align-content: end;
-    align-self: stretch;
-    gap: clamp(1.5rem, 3.5vw, 2.25rem);
-    max-width: 36rem;
-    padding-top: clamp(4rem, 14vh, 8rem);
+    align-content: start;
+    align-self: start;
+    gap: clamp(1.25rem, 2.8vw, 1.85rem);
+    max-width: 34rem;
+    width: 100%;
+    padding-top: clamp(1.5rem, 8vh, 4.5rem);
     padding-bottom: 0.25rem;
 }
 
@@ -516,9 +569,8 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .field-base,
-    .field-presence,
-    .field-grain,
+    .bay-sky-grain,
+    .bay-sky-fog,
     .settle,
     .commit-tape-track.is-marquee,
     .guestbook-word.is-new {
@@ -538,12 +590,16 @@ body {
         display: none;
     }
 
+    .bay-sun {
+        transition: none;
+    }
+
     html,
     body,
     .field,
-    .field-base,
-    .field-presence,
-    .mark,
+    .bay-sky-dim,
+    .bay-sky-horizon,
+    .bay-sky-veil,
     .status,
     .identity h1,
     .proof,
@@ -560,23 +616,14 @@ body {
     }
 }
 
-@keyframes presence-drift {
+@keyframes fog-drift {
     from {
-        transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
-        opacity: 0.72;
+        transform: translate3d(0, 0, 0);
+        opacity: 0.62;
     }
     to {
-        transform: translate3d(-4%, 6%, 0) scale(1.08) rotate(8deg);
-        opacity: 0.95;
-    }
-}
-
-@keyframes field-breathe {
-    from {
-        transform: scale(1) translate3d(0, 0, 0);
-    }
-    to {
-        transform: scale(1.03) translate3d(-1%, 0.6%, 0);
+        transform: translate3d(2.5%, -1%, 0);
+        opacity: 0.78;
     }
 }
 
@@ -634,14 +681,13 @@ body {
     }
 
     .holding {
-        align-content: center;
-        padding-top: 0;
+        align-content: start;
+        padding-top: clamp(2.5rem, 9vh, 5.5rem);
         min-height: 0;
     }
 
-    .field-presence {
-        right: 4%;
-        top: 18%;
+    .bay-sky-photo {
+        object-position: center 40%;
     }
 }
 
@@ -652,8 +698,9 @@ body {
     }
 
     .holding {
-        gap: 1.35rem;
-        align-content: end;
+        gap: 1.2rem;
+        align-content: start;
+        padding-top: clamp(1.25rem, 6vh, 2.5rem);
         padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
     }
 
@@ -661,12 +708,25 @@ body {
         font-size: clamp(2.4rem, 11vw, 3.1rem);
     }
 
-    .field-presence {
-        width: 70vw;
-        height: 70vw;
-        top: 6%;
-        right: -18%;
-        opacity: 0.7;
+    .bay-sky-photo {
+        object-position: 58% 40%;
+    }
+
+    .bay-sky-veil {
+        background:
+            linear-gradient(
+                180deg,
+                rgba(6, 8, 18, 0.5) 0%,
+                transparent 32%,
+                transparent 52%,
+                rgba(4, 5, 12, 0.5) 100%
+            ),
+            linear-gradient(
+                90deg,
+                rgba(6, 8, 18, 0.42) 0%,
+                transparent 55%,
+                transparent 100%
+            );
     }
 
     .links {
