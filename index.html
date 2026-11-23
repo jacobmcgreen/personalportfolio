@@ -4,44 +4,88 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Jacob McGreen — Enterprise AI at Palo Alto Networks. Personal site redesign underway.">
-    <meta name="theme-color" content="#0a0a0a">
+    <meta name="theme-color" content="#0b0d18">
     <title>Jacob McGreen</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Manrope:wght@400;500;600&family=Rethink+Sans:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
-    <script src="js/script.js" defer></script>
+    <script type="module" src="js/script.js"></script>
 </head>
 <body>
     <a class="skip-link" href="#main">Skip to content</a>
 
     <div class="field" aria-hidden="true">
-        <div class="field-base"></div>
-        <div class="field-wash"></div>
-        <div class="field-presence"></div>
-        <div class="field-grain"></div>
+        <div class="bay-sky">
+            <div class="bay-sky-photos">
+                <img class="bay-sky-photo" data-phase="dawn" src="images/bay-sky/dawn.jpg" alt="" width="1280" height="720" decoding="async" fetchpriority="high">
+                <img class="bay-sky-photo" data-phase="morning" src="images/bay-sky/morning.jpg" alt="" width="1280" height="720" decoding="async" loading="lazy">
+                <img class="bay-sky-photo" data-phase="high" src="images/bay-sky/high.jpg" alt="" width="1280" height="720" decoding="async" loading="lazy">
+                <img class="bay-sky-photo" data-phase="golden" src="images/bay-sky/golden.jpg" alt="" width="1280" height="720" decoding="async" loading="lazy">
+                <img class="bay-sky-photo" data-phase="sunset" src="images/bay-sky/sunset.jpg" alt="" width="1280" height="720" decoding="async" loading="lazy">
+                <img class="bay-sky-photo" data-phase="blue" src="images/bay-sky/blue.jpg" alt="" width="1280" height="720" decoding="async" loading="lazy">
+                <img class="bay-sky-photo" data-phase="night" src="images/bay-sky/night.jpg" alt="" width="1280" height="720" decoding="async" loading="lazy">
+            </div>
+            <div class="bay-sky-dim"></div>
+            <div class="bay-sky-horizon"></div>
+            <div class="bay-sun" id="bay-sun" data-visible="false">
+                <span class="bay-sun-glow"></span>
+                <span class="bay-sun-disk"></span>
+            </div>
+            <div class="bay-moon" id="bay-moon" data-visible="false">
+                <span class="bay-moon-glow"></span>
+                <span class="bay-moon-disk"></span>
+            </div>
+            <div class="bay-sky-veil"></div>
+            <div class="bay-sky-fog"></div>
+            <div class="bay-sky-grain"></div>
+        </div>
     </div>
 
     <div class="shell">
-        <p class="mark settle" style="--d: 0">JM</p>
-
         <main id="main" class="holding">
-            <p class="status settle" style="--d: 1">Redesign in progress</p>
+            <p class="status settle" style="--d: 0">Redesign in progress</p>
 
-            <header class="identity settle" style="--d: 2">
+            <header class="identity settle" style="--d: 1">
                 <h1>Jacob McGreen</h1>
                 <p class="proof">Enterprise AI at Palo Alto Networks</p>
                 <p class="place">Bay Area</p>
             </header>
 
-            <p class="note settle" style="--d: 3">Selected work returns here soon.</p>
+            <p class="note settle" style="--d: 2">Selected work returns here soon.</p>
 
-            <nav class="links settle" style="--d: 4" aria-label="Contact">
+            <nav class="links settle" style="--d: 3" aria-label="Contact">
                 <a href="mailto:jmcgreen07@gmail.com"><span>Email</span></a>
                 <a href="https://github.com/jacobmcgreen" target="_blank" rel="noopener"><span>GitHub</span></a>
                 <a href="assets/JMcGreen%20Resume.pdf" target="_blank" rel="noopener"><span>Résumé</span></a>
             </nav>
+
+            <section class="guestbook settle" style="--d: 4" aria-label="One-word guestbook">
+                <div class="guestbook-wall" id="guestbook-wall"></div>
+                <form class="guestbook-form" id="guestbook-form" autocomplete="off">
+                    <label class="visually-hidden" for="guestbook-word">Leave one word</label>
+                    <input
+                        id="guestbook-word"
+                        name="word"
+                        type="text"
+                        maxlength="16"
+                        inputmode="text"
+                        spellcheck="false"
+                        autocapitalize="off"
+                        placeholder="one word"
+                        aria-describedby="guestbook-hint"
+                    >
+                    <span id="guestbook-hint" class="guestbook-hint" aria-live="polite"></span>
+                </form>
+            </section>
         </main>
+    </div>
+
+    <div class="commit-tape" id="commit-tape" hidden>
+        <div class="commit-tape-fade" aria-hidden="true"></div>
+        <div class="commit-tape-inner">
+            <div class="commit-tape-track" id="commit-tape-track"></div>
+        </div>
     </div>
 </body>
 </html>

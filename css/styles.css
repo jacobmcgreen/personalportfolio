@@ -1,17 +1,65 @@
+@property --bg {
+    syntax: "<color>";
+    inherits: true;
+    initial-value: #0b0d18;
+}
+
+@property --ink {
+    syntax: "<color>";
+    inherits: true;
+    initial-value: #f3f1f4;
+}
+
+@property --muted {
+    syntax: "<color>";
+    inherits: true;
+    initial-value: #b4aeb8;
+}
+
 :root {
-    --bg: #0a0a0a;
+    --bg: #0b0d18;
     --surface: #121212;
-    --ink: #f5f5f7;
-    --muted: #a2a2a2;
+    --ink: #f3f1f4;
+    --muted: #b4aeb8;
     --outline: #444444;
     --glass: rgba(255, 255, 255, 0.05);
     --glass-line: rgba(255, 255, 255, 0.1);
+    --sky-veil: rgba(8, 10, 22, 0.18);
+    --sky-horizon: rgba(255, 186, 150, 0.22);
+    --sky-dim: 0;
+    --sky-dawn: 0;
+    --sky-morning: 0;
+    --sky-high: 0;
+    --sky-golden: 0;
+    --sky-sunset: 0;
+    --sky-blue: 0;
+    --sky-night: 1;
+    --sun-color: rgba(255, 236, 210, 0.95);
+    --sun-glow: rgba(255, 176, 130, 0.45);
+    --sun-x: 18%;
+    --sun-y: 58%;
+    --sun-scale: 1;
+    --sun-soft: 1;
+    --moon-phase: 0.3;
+    --moon-shade: 0.28;
     --display: "Rethink Sans", "Avenir Next", "Segoe UI", sans-serif;
     --sans: "Manrope", "Avenir Next", "Segoe UI", sans-serif;
     --mono: "IBM Plex Mono", ui-monospace, monospace;
     --ease: cubic-bezier(0.22, 1, 0.36, 1);
     --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --sky-shift: 8s;
     color-scheme: dark;
+}
+
+html {
+    transition:
+        --bg var(--sky-shift) var(--ease),
+        --ink var(--sky-shift) var(--ease),
+        --muted var(--sky-shift) var(--ease),
+        --sky-veil var(--sky-shift) var(--ease),
+        --sky-horizon var(--sky-shift) var(--ease),
+        --sun-color var(--sky-shift) var(--ease),
+        --sun-glow var(--sky-shift) var(--ease);
 }
 
 *,
@@ -36,6 +84,19 @@ body {
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     overflow-x: hidden;
+    transition: background-color var(--sky-shift) var(--ease), color var(--sky-shift) var(--ease);
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
 }
 
 .skip-link {
@@ -63,45 +124,268 @@ body {
     pointer-events: none;
     overflow: hidden;
     background: var(--bg);
+    transition: background-color var(--sky-shift) var(--ease);
 }
 
-.field-base {
+.bay-sky {
     position: absolute;
-    inset: -8%;
-    background:
-        radial-gradient(90% 70% at 78% 28%, rgba(255, 255, 255, 0.07) 0%, transparent 55%),
-        radial-gradient(70% 60% at 18% 82%, rgba(255, 255, 255, 0.035) 0%, transparent 50%),
-        linear-gradient(160deg, #121212 0%, #0a0a0a 48%, #050505 100%);
-    animation: field-breathe 32s var(--ease) infinite alternate;
+    inset: 0;
 }
 
-.field-wash {
+.bay-sky-photos {
+    position: absolute;
+    inset: 0;
+}
+
+.bay-sky-photo {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 42%;
+    transform: scale(1.02);
+    filter: saturate(0.92) contrast(1.02);
+    opacity: 0;
+    transition: opacity var(--sky-shift) var(--ease);
+    will-change: opacity;
+}
+
+.bay-sky-photo[data-phase="dawn"] { opacity: var(--sky-dawn, 0); }
+.bay-sky-photo[data-phase="morning"] { opacity: var(--sky-morning, 0); }
+.bay-sky-photo[data-phase="high"] { opacity: var(--sky-high, 0); }
+.bay-sky-photo[data-phase="golden"] { opacity: var(--sky-golden, 0); }
+.bay-sky-photo[data-phase="sunset"] { opacity: var(--sky-sunset, 0); }
+.bay-sky-photo[data-phase="blue"] { opacity: var(--sky-blue, 0); }
+.bay-sky-photo[data-phase="night"] { opacity: var(--sky-night, 1); }
+
+.bay-sky-dim {
+    position: absolute;
+    inset: 0;
+    background: rgba(4, 6, 14, var(--sky-dim));
+    transition: background var(--sky-shift) var(--ease);
+}
+
+.bay-sky-horizon {
     position: absolute;
     inset: 0;
     background:
-        linear-gradient(180deg, rgba(10, 10, 10, 0.15) 0%, transparent 30%, transparent 65%, rgba(5, 5, 5, 0.55) 100%),
-        radial-gradient(55% 45% at 70% 45%, transparent 0%, rgba(0, 0, 0, 0.35) 100%);
-}
-
-.field-presence {
-    position: absolute;
-    width: min(56vw, 42rem);
-    height: min(56vw, 42rem);
-    top: 10%;
-    right: -4%;
-    border-radius: 45% 55% 48% 52%;
-    background:
-        radial-gradient(circle at 42% 40%, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.06) 32%, transparent 66%);
-    filter: blur(32px);
+        radial-gradient(
+            55% 28% at var(--sun-x) calc(var(--sun-y) + 4%),
+            var(--sky-horizon) 0%,
+            transparent 70%
+        ),
+        linear-gradient(
+            180deg,
+            transparent 42%,
+            color-mix(in srgb, var(--sky-horizon) 55%, transparent) 58%,
+            transparent 72%
+        );
     opacity: 0.9;
-    animation: presence-drift 24s var(--ease) infinite alternate;
-    transform-origin: 55% 45%;
+    transition: background var(--sky-shift) var(--ease), opacity var(--sky-shift) var(--ease);
 }
 
-.field-grain {
+.bay-sun {
+    position: absolute;
+    left: var(--sun-x);
+    top: var(--sun-y);
+    width: 0;
+    height: 0;
+    transform: translate(-50%, -50%) scale(var(--sun-scale));
+    opacity: 0;
+    transition:
+        left 1.2s var(--ease),
+        top 1.2s var(--ease),
+        opacity 1.4s var(--ease),
+        transform 1.2s var(--ease);
+    will-change: left, top, opacity;
+}
+
+.bay-sun[data-visible="true"] {
+    opacity: 1;
+}
+
+.bay-sun-glow {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: clamp(11rem, 34vw, 22rem);
+    height: clamp(11rem, 34vw, 22rem);
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        var(--sun-glow) 0%,
+        color-mix(in srgb, var(--sun-glow) 40%, transparent) 32%,
+        transparent 68%
+    );
+    filter: blur(calc(14px + 16px * var(--sun-soft)));
+    opacity: calc(0.62 + 0.3 * var(--sun-soft));
+}
+
+.bay-sun-disk {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: clamp(0.7rem, 1.35vw, 1.15rem);
+    height: clamp(0.7rem, 1.35vw, 1.15rem);
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: radial-gradient(
+        circle at 40% 35%,
+        #fffaf0 0%,
+        var(--sun-color) 45%,
+        color-mix(in srgb, var(--sun-color) 40%, transparent) 100%
+    );
+    filter: blur(0.35px);
+    box-shadow:
+        0 0 0.55rem color-mix(in srgb, var(--sun-color) 70%, transparent),
+        0 0 1.8rem var(--sun-glow),
+        0 0 3.5rem color-mix(in srgb, var(--sun-glow) 55%, transparent);
+}
+
+.bay-moon {
+    position: absolute;
+    left: var(--sun-x);
+    top: var(--sun-y);
+    width: 0;
+    height: 0;
+    transform: translate(-50%, -50%) scale(var(--sun-scale, 1));
+    opacity: 0;
+    transition:
+        left 1.2s var(--ease),
+        top 1.2s var(--ease),
+        opacity 1.4s var(--ease),
+        transform 1.2s var(--ease);
+    will-change: left, top, opacity;
+}
+
+.bay-moon[data-visible="true"] {
+    opacity: 1;
+}
+
+.bay-moon-glow {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: clamp(4rem, 12vw, 8rem);
+    height: clamp(4rem, 12vw, 8rem);
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        rgba(220, 228, 255, 0.28) 0%,
+        rgba(180, 190, 220, 0.08) 45%,
+        transparent 70%
+    );
+    filter: blur(10px);
+}
+
+.bay-moon-disk {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: clamp(0.55rem, 1.05vw, 0.9rem);
+    height: clamp(0.55rem, 1.05vw, 0.9rem);
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background:
+        radial-gradient(
+            circle at calc(var(--moon-shade, 0.28) * 100%) 40%,
+            transparent 38%,
+            rgba(8, 10, 18, 0.92) 52%,
+            rgba(8, 10, 18, 0.96) 100%
+        ),
+        radial-gradient(
+            circle at 35% 30%,
+            #f4f2ea 0%,
+            #d8d6cc 55%,
+            #a8a69c 100%
+        );
+    box-shadow: 0 0 0.8rem rgba(220, 225, 240, 0.25);
+}
+
+.bay-sky-veil {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(
+            180deg,
+            color-mix(in srgb, var(--sky-veil) 90%, transparent) 0%,
+            transparent 28%,
+            transparent 55%,
+            rgba(4, 5, 12, 0.5) 100%
+        ),
+        linear-gradient(
+            90deg,
+            rgba(6, 8, 18, 0.48) 0%,
+            rgba(6, 8, 18, 0.22) 22%,
+            transparent 46%,
+            transparent 100%
+        ),
+        var(--sky-veil);
+    transition: background var(--sky-shift) var(--ease), opacity var(--sky-shift) var(--ease);
+}
+
+body.sky-light .bay-sky-veil {
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.28) 0%,
+            transparent 30%,
+            transparent 60%,
+            rgba(20, 24, 32, 0.18) 100%
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.42) 0%,
+            rgba(255, 255, 255, 0.18) 28%,
+            transparent 52%,
+            transparent 100%
+        );
+}
+
+body.sky-light .links a:hover,
+body.sky-light .links a:focus-visible {
+    color: #000000;
+}
+
+body.sky-light .guestbook-word {
+    color: color-mix(in srgb, var(--ink) 70%, var(--muted));
+}
+
+body.sky-light .commit-item {
+    color: color-mix(in srgb, var(--ink) 55%, transparent);
+    opacity: 0.45;
+}
+
+body.sky-light .commit-tape {
+    background: linear-gradient(
+        180deg,
+        transparent 0%,
+        color-mix(in srgb, var(--bg) 55%, transparent) 55%,
+        color-mix(in srgb, var(--bg) 75%, transparent) 100%
+    );
+}
+
+.bay-sky-fog {
+    position: absolute;
+    left: -5%;
+    right: -5%;
+    bottom: 8%;
+    height: 38%;
+    background:
+        radial-gradient(60% 80% at 40% 60%, rgba(180, 170, 190, 0.12) 0%, transparent 70%),
+        radial-gradient(50% 70% at 70% 70%, rgba(160, 155, 175, 0.1) 0%, transparent 65%);
+    filter: blur(18px);
+    opacity: 0.7;
+    animation: fog-drift 40s var(--ease) infinite alternate;
+}
+
+.bay-sky-grain {
     position: absolute;
     inset: -20%;
-    opacity: 0.22;
+    opacity: 0.16;
     mix-blend-mode: overlay;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.65'/%3E%3C/svg%3E");
     background-size: 160px 160px;
@@ -112,32 +396,21 @@ body {
     position: relative;
     z-index: 1;
     display: grid;
-    grid-template-rows: auto 1fr;
     min-height: 100svh;
     padding:
-        clamp(1.25rem, 3vw, 1.75rem)
+        clamp(1.5rem, 4vw, 2.5rem)
         clamp(1.25rem, 5vw, 3.5rem)
-        clamp(1.75rem, 4vw, 2.75rem);
-}
-
-.mark {
-    margin: 0;
-    width: fit-content;
-    color: var(--ink);
-    font-family: var(--display);
-    font-size: 0.8125rem;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    opacity: 0.72;
+        clamp(3.25rem, 6vw, 4.5rem);
 }
 
 .holding {
     display: grid;
-    align-content: end;
-    align-self: stretch;
-    gap: clamp(1.5rem, 3.5vw, 2.25rem);
-    max-width: 36rem;
-    padding-top: clamp(4rem, 14vh, 8rem);
+    align-content: start;
+    align-self: start;
+    gap: clamp(1.25rem, 2.8vw, 1.85rem);
+    max-width: 34rem;
+    width: 100%;
+    padding-top: clamp(1.5rem, 8vh, 4.5rem);
     padding-bottom: 0.25rem;
 }
 
@@ -148,6 +421,7 @@ body {
     font-size: 0.75rem;
     font-weight: 500;
     letter-spacing: 0.02em;
+    transition: color var(--sky-shift) var(--ease);
 }
 
 .identity h1 {
@@ -157,6 +431,7 @@ body {
     font-weight: 600;
     letter-spacing: -0.035em;
     line-height: 0.95;
+    transition: color var(--sky-shift) var(--ease);
 }
 
 .proof,
@@ -167,6 +442,7 @@ body {
     font-weight: 500;
     letter-spacing: -0.01em;
     line-height: 1.45;
+    transition: color var(--sky-shift) var(--ease);
 }
 
 .proof + .place {
@@ -182,6 +458,7 @@ body {
     letter-spacing: -0.01em;
     line-height: 1.5;
     opacity: 0.92;
+    transition: color var(--sky-shift) var(--ease);
 }
 
 .links {
@@ -235,6 +512,182 @@ body {
     transform: scale(0.98);
 }
 
+/* ——— One-word guestbook ——— */
+.guestbook {
+    display: grid;
+    gap: 0.85rem;
+    margin-top: 0.5rem;
+    max-width: 28rem;
+}
+
+.guestbook-wall {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.35rem 0.55rem;
+    min-height: 1.25rem;
+    color: var(--muted);
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    line-height: 1.6;
+    opacity: 0.72;
+}
+
+.guestbook-word {
+    color: color-mix(in srgb, var(--ink) 55%, var(--muted));
+    transition: color 400ms var(--ease-out), opacity 400ms var(--ease-out);
+}
+
+.guestbook-word.is-new {
+    animation: word-arrive 1.4s var(--ease-out);
+}
+
+.guestbook-sep {
+    opacity: 0.35;
+    user-select: none;
+}
+
+.guestbook-empty {
+    opacity: 0.28;
+    letter-spacing: 0.12em;
+}
+
+.guestbook-form {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    margin: 0;
+}
+
+.guestbook-form input {
+    width: min(9.5rem, 42vw);
+    margin: 0;
+    padding: 0.15rem 0;
+    border: 0;
+    border-bottom: 1px solid color-mix(in srgb, var(--muted) 35%, transparent);
+    border-radius: 0;
+    background: transparent;
+    color: var(--ink);
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    outline: none;
+    transition: border-color 240ms var(--ease-out), opacity 240ms var(--ease-out);
+}
+
+.guestbook-form input::placeholder {
+    color: var(--muted);
+    opacity: 0.45;
+}
+
+.guestbook-form input:focus {
+    border-bottom-color: color-mix(in srgb, var(--ink) 45%, transparent);
+}
+
+.guestbook-form.is-busy input {
+    opacity: 0.55;
+}
+
+.guestbook-hint {
+    min-height: 1em;
+    color: var(--muted);
+    font-family: var(--mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.04em;
+    opacity: 0.55;
+}
+
+/* ——— Commit tape ——— */
+.commit-tape {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    height: 2rem;
+    pointer-events: none;
+    overflow: hidden;
+    background: linear-gradient(180deg, transparent 0%, color-mix(in srgb, var(--bg) 72%, transparent) 55%, color-mix(in srgb, var(--bg) 88%, transparent) 100%);
+}
+
+.commit-tape-inner {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+}
+
+.commit-tape-track {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    width: max-content;
+    padding-inline: 1.25rem;
+    white-space: nowrap;
+    pointer-events: auto;
+}
+
+.commit-tape-track.is-marquee {
+    animation: tape-scroll 90s linear infinite;
+}
+
+.commit-item {
+    color: color-mix(in srgb, var(--muted) 85%, transparent);
+    font-family: var(--mono);
+    font-size: 0.625rem;
+    font-weight: 400;
+    letter-spacing: 0.03em;
+    text-decoration: none;
+    opacity: 0.55;
+    transition: opacity 240ms var(--ease-out), color 240ms var(--ease-out);
+}
+
+.commit-item:hover,
+.commit-item:focus-visible {
+    outline: none;
+    opacity: 0.9;
+    color: var(--ink);
+}
+
+.commit-sep {
+    margin-inline: 1.1rem;
+    color: var(--muted);
+    font-family: var(--mono);
+    font-size: 0.5rem;
+    opacity: 0.28;
+    user-select: none;
+}
+
+/* ——— Equation trail ——— */
+.trail-layer {
+    position: fixed;
+    inset: 0;
+    z-index: 3;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.trail-glyph {
+    position: absolute;
+    transform: translate(-50%, -50%) rotate(var(--rot, 0deg));
+    color: color-mix(in srgb, var(--ink) 70%, var(--muted));
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    opacity: 0;
+    animation: glyph-dissolve var(--life, 1100ms) var(--ease-out) forwards;
+    text-shadow: none;
+    user-select: none;
+}
+
+.trail-glyph--tap {
+    font-size: 0.78rem;
+}
+
 .settle {
     opacity: 0;
     transform: translateY(0.85rem);
@@ -243,10 +696,11 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .field-base,
-    .field-presence,
-    .field-grain,
-    .settle {
+    .bay-sky-grain,
+    .bay-sky-fog,
+    .settle,
+    .commit-tape-track.is-marquee,
+    .guestbook-word.is-new {
         animation: none;
     }
 
@@ -258,6 +712,30 @@ body {
     .links a span::after {
         transition: none;
     }
+
+    .trail-layer {
+        display: none;
+    }
+
+    .bay-sun,
+    .bay-moon,
+    .bay-sky-photo {
+        transition: none;
+    }
+
+    html,
+    body,
+    .field,
+    .bay-sky-dim,
+    .bay-sky-horizon,
+    .bay-sky-veil,
+    .status,
+    .identity h1,
+    .proof,
+    .place,
+    .note {
+        transition: none;
+    }
 }
 
 @keyframes settle {
@@ -267,23 +745,14 @@ body {
     }
 }
 
-@keyframes presence-drift {
+@keyframes fog-drift {
     from {
-        transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
-        opacity: 0.72;
+        transform: translate3d(0, 0, 0);
+        opacity: 0.62;
     }
     to {
-        transform: translate3d(-4%, 6%, 0) scale(1.08) rotate(8deg);
-        opacity: 0.95;
-    }
-}
-
-@keyframes field-breathe {
-    from {
-        transform: scale(1) translate3d(0, 0, 0);
-    }
-    to {
-        transform: scale(1.03) translate3d(-1%, 0.6%, 0);
+        transform: translate3d(2.5%, -1%, 0);
+        opacity: 0.78;
     }
 }
 
@@ -296,27 +765,71 @@ body {
     }
 }
 
+@keyframes glyph-dissolve {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -40%) rotate(var(--rot, 0deg)) scale(0.92);
+    }
+    14% {
+        opacity: 0.38;
+    }
+    55% {
+        opacity: 0.26;
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -70%) rotate(var(--rot, 0deg)) scale(1.02);
+    }
+}
+
+@keyframes word-arrive {
+    from {
+        opacity: 0.2;
+        color: var(--ink);
+    }
+    to {
+        opacity: 1;
+        color: color-mix(in srgb, var(--ink) 55%, var(--muted));
+    }
+}
+
+@keyframes tape-scroll {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
 @media (min-width: 900px) {
-    .holding {
-        align-content: center;
-        padding-top: 0;
-        min-height: calc(100svh - 5.5rem);
+    .shell {
+        height: 100svh;
+        min-height: 100svh;
+        overflow: hidden;
     }
 
-    .field-presence {
-        right: 4%;
-        top: 18%;
+    .holding {
+        align-content: start;
+        padding-top: clamp(2.5rem, 9vh, 5.5rem);
+        min-height: 0;
+    }
+
+    .bay-sky-photo {
+        object-position: center 40%;
     }
 }
 
 @media (max-width: 640px) {
     .shell {
         padding-inline: 1.25rem;
+        padding-bottom: calc(2.75rem + env(safe-area-inset-bottom));
     }
 
     .holding {
-        gap: 1.35rem;
-        align-content: end;
+        gap: 1.2rem;
+        align-content: start;
+        padding-top: clamp(1.25rem, 6vh, 2.5rem);
         padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
     }
 
@@ -324,15 +837,40 @@ body {
         font-size: clamp(2.4rem, 11vw, 3.1rem);
     }
 
-    .field-presence {
-        width: 70vw;
-        height: 70vw;
-        top: 6%;
-        right: -18%;
-        opacity: 0.7;
+    .bay-sky-photo {
+        object-position: 58% 40%;
+    }
+
+    .bay-sky-veil {
+        background:
+            linear-gradient(
+                180deg,
+                rgba(6, 8, 18, 0.5) 0%,
+                transparent 32%,
+                transparent 52%,
+                rgba(4, 5, 12, 0.5) 100%
+            ),
+            linear-gradient(
+                90deg,
+                rgba(6, 8, 18, 0.42) 0%,
+                transparent 55%,
+                transparent 100%
+            );
     }
 
     .links {
         gap: 0.85rem 1.15rem;
+    }
+
+    .guestbook {
+        max-width: 100%;
+    }
+
+    .commit-tape {
+        height: 1.85rem;
+    }
+
+    .commit-item {
+        font-size: 0.5625rem;
     }
 }
